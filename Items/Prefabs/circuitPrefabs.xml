@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="turret switch prefab" identifier="prefab_turretswitch" category="Electrical" Tags="smallitem" maxstacksize="1" scale="0.25" impactsoundtag="impact_metal_light" isshootable="true" disablecommandmenuwhenselected="true" grabwhenselected="true">
+    <PreferredContainer primary="engcab"/>
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" sourcerect="192,258,64,64" depth="0.8" canflipx="false" origin="0.5,0.5" />
+    <Body width="51" height="51" density="30" />
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="copper" />
+      <Item identifier="tin" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredSkill identifier="electrical" level="35" />
+      <RequiredItem identifier="plastic" amount="2" />
+      <RequiredItem identifier="copper" amount="4" />
+      <RequiredItem identifier="tin" amount="4" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+      <RequiredSkill identifier="electrical" level="35" />
+      <RequiredItem identifier="plastic" amount="2" />
+      <RequiredItem identifier="copper" amount="2" />
+      <RequiredItem identifier="tin" amount="2" />
+    </Fabricate>
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="85,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench" type="Equipped" />
+    </Holdable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.4,0.62" minsize="400,350" maxsize="960,840" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="signal_in1" displayname="connection.turretaimingin" />
+      <input name="signal_in2" displayname="connection.turrettriggerin" />
+      <input name="signal_in3" displayname="connection.setstatex~[num]=1" />
+      <input name="signal_in4" displayname="connection.setstatex~[num]=2" />
+      <input name="signal_in5" displayname="connection.togglestate" />
+      <output name="signal_out1" displayname="connection.turretaimingoutx~[num]=1" />
+      <output name="signal_out2" displayname="connection.turrettriggeroutx~[num]=1" />
+      <output name="signal_out3" displayname="connection.turretaimingoutx~[num]=2" />
+      <output name="signal_out4" displayname="connection.turrettriggeroutx~[num]=2" />
+      <output name="signal_out5" displayname="connection.stateout" />
+    </ConnectionPanel>
+    <!-- container for components -->
+    <ItemContainer capacity="64" maxstacksize="1" canbeselected="false" allowdraganddrop="false" drawinventory="false" QuickUseMovesItemsInside="false">
+      <Containable items="circuitboxcomponent" />
+    </ItemContainer>
+    <!-- container for wires -->
+    <ItemContainer capacity="10" maxstacksize="32" canbeselected="false" allowdraganddrop="false" drawinventory="false" QuickUseMovesItemsInside="false">
+      <Containable items="wire" />
+    </ItemContainer>
+    <CircuitBox selectkey="Action" canbeselected="true" msg="ItemMsgInteractSelect" allowuioverlap="true">
+      <GuiFrame relativesize="0.7,0.8" style="ItemUI" anchor="Center" />
+      <WireSprite texture="Content/Items/Electricity/wire.png" sourcerect="0,0,16,12" origin="0.5,0.5" />
+      <ConnectionSprite texture="Content/UI/UIAtlasDevices.png" sourcerect="1,1,56,55" origin="0.5,0.5" />
+      <WireConnectorSprite texture="Content/UI/UIAtlasDevices.png" sourcerect="69,3,45,85" origin="0.5,0.27" />
+      <ConnectionScrewSprite texture="Content/UI/UIAtlasDevices.png" sourcerect="88,92,45,45" origin="0.5,0.5" />
+    </CircuitBox>
+  </Item>
+</Items>

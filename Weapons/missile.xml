@@ -1,0 +1,76 @@
+<Items>
+
+  <Item name="missile launcher" identifier="concorde_missile-launcher" tags="missile-launcher" category="Machine,Weapon" focusonselected="true" offsetonselected="700" linkable="true" allowedlinks="concorde_missile-source" scale="0.5">
+    <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" depth="0.01" sourcerect="259,1,85,149" origin="0.5,0.5" />
+    <Turret canbeselected="false" linkable="true" characterusable="false" barrelpos="42, 149" rotationlimits="90,90" powerconsumption="0.0" />
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+    </ConnectionPanel>
+  </Item>
+  
+  <Item name="missile loader" identifier="concorde_missile-loader" tags="concorde_missile-source" category="Machine,Weapon" linkable="true" allowedlinks="concorde_missile-launcher" scale="0.5">
+    <Sprite name="Missile Loader Front" texture="Content/Items/Weapons/Loaders.png" depth="0.78" sourcerect="709,370,220,353" origin="0.5,0.5" />
+    <BrokenSprite texture="Content/Items/Weapons/Loaders.png"  sourcerect="163,563,153,351" origin="0.5,0.5" offset="35,4" depth="0.77" fadein="true" maxcondition="99"/>
+    <UpgradePreviewSprite texture="Content/UI/WeaponUI.png" sourcerect="208,968,32,46" origin="0.5,0.5" />
+    <DecorativeSprite name="Missile Loader Frame Front" texture="Content/Items/Weapons/Loaders.png" depth="0.8" sourcerect="31,569,117,200" origin="0.5,0.5" offset="0,-30" />
+    <ItemContainer hideitems="false" drawinventory="true" capacity="6" slotsperrow="6" itempos="58,-200" iteminterval="20,0" itemrotation="90" canbeselected="true" msg="ItemMsgInteractSelect" containedspritedepths="0.79,0.791,0.792,0.793,0.794,0.795">
+      <GuiFrame relativesize="0.25,0.2" anchor="Center" style="ItemUI" />
+      <Containable items="missile_ammo" />
+    </ItemContainer>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" deteriorationspeed="20" mindeteriorationdelay="5" maxdeteriorationdelay="15" MinDeteriorationCondition="0" RepairThreshold="50" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <StatusEffect type="InWater" target="This" condition="-0.25" />
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="-0.1,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="55" />
+      <RequiredItem items="wrench" type="Equipped" />
+      <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+      <ParticleEmitter particle="smoke" particlespersecond="2" scalemin="1" scalemax="2.5" anglemax="360" velocitymin="-50" velocitymax="50" mincondition="15.0" maxcondition="50.0" />
+      <ParticleEmitter particle="heavysmoke" particlespersecond="2" scalemin="1.0" scalemax="2.5" anglemax="360" distancemax="60" mincondition="0.0" maxcondition="15.0" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Items/MechanicalRepairFail.ogg" range="1000" />
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="stun" strength="4" />
+      </StatusEffect>
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+  
+  <Item name="XT 01 missile" identifier="concorde_missile" tags="missile_ammo" category="Weapon" scale="0.4" impactsoundtag="impact_metal_heavy" damagedbymonsters="true" damagedbyexplosions="true" damagedbyrepairtools="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" indestructible="true" health="10" cargocontaineridentifier="">
+    <Upgrade gameversion="0.20.4.0" scale="0.4"/>
+    <PreferredContainer primary="concorde_missile-loader" secondary="ammoboxcontainer" />
+    <Price baseprice="120" minavailable="1">
+      <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="4" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+      <Item identifier="uex" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="25" />
+      <RequiredItem identifier="iron" amount="2" />
+      <RequiredItem identifier="uex" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,959,61,65" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Characters/Missile/missile.png" sourcerect="0,0,256,32" depth="0.55" origin="0.5,0.5" />
+    <Body width="256" height="32" density="5" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" launchimpulse="5.0">
+      <!-- Make destructible when launched -->
+      <StatusEffect type="OnUse" target="This" Indestructible="false"/>
+      <StatusEffect type="OnUse" target="This" delay="2">
+        <SpawnCharacter speciesname="Missile" totalmaxcount="12"/>
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+
+</Items>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+<Item name="forcefield" identifier="forcefield" tags="door,weldable" scale="0.5" health="100" damagedbyrepairtools="false" damagedbymonsters="true" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.3" allowrotatingineditor="true" allowedlinks="structure,item" ondamagedthreshold="2" linkable="true">
+    <Sprite texture="%ModDir%/Structures/forcefield.png" sourcerect="0,0,49,416" depth="0.51" origin="0.5,0.5" />
+    <Door canbeselected="true" canbepicked="false" shadowscale="0.7,1">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" />
+      <Sprite texture="%ModDir%/Structures/forcefield.png" sourcerect="158,0,42,416" depth="0.05" origin="0.5,0.0" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" delay="5" condition="100">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <LightComponent lightcolor="1.0,1.0,1.0,0.5" range="800.0" powerconsumption="5">
+      <LightTexture texture="Content/Lights/pointlight_bounce.png" origin="0.5,0.5" />
+      <!-- additive "top light" -->
+      <sprite texture="%ModDir%/Structures/forcefield.png" sourcerect="158,0,42,416" />
+      <StatusEffect type="OnBroken" target="This" delay="5" condition="100">
+    </LightComponent>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="power_in" displayname="connection.powerin"/>
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <input name="set_color" displayname="connection.setcolor" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="vertical door" identifier="verticaldoor" tags="door" scale="0.5" health="100" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="true" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
+    <Sprite texture="vertDoor.png" sourcerect="0,0,416,49" depth="0.51" origin="0.5,0.5" />
+    <DecorativeSprite texture="vertDoor.png" sourcerect="0,49,416,49" depth="0.89" origin="0.5,0.5"/>
+    <Door window="0,0,50,400" canbepicked="true" canbeselected="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="0.7,1">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" />
+      <Sprite texture="vertDoor.png" sourcerect="0,106,416,50" depth="0.05" origin="0.5,0.0" />
+      <WeldedSprite texture="vertDoor.png" sourcerect="0,203,377,65" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="vertDoor.png" sourcerect="0,392,416,120" depth="0.509" origin="0.5,0.0" scale="true" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="reinforced vertical door" identifier="heavyverticaldoor" tags="door" scale="0.5" health="300" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="false" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
+    <Sprite texture="vertDoor.png" sourcerect="0,0,416,49" depth="0.51" origin="0.5,0.5" />
+    <DecorativeSprite texture="vertDoor.png" sourcerect="0,49,416,49" depth="0.89" origin="0.5,0.5"/>
+    <Door window="0,0,50,400" canbepicked="true" canbeselected="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="0.7,1">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" />
+      <Sprite texture="vertDoor.png" sourcerect="0,158,416,42" depth="0.05" origin="0.5,0.0" />
+      <WeldedSprite texture="vertDoor.png" sourcerect="0,203,377,65" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="vertDoor.png" sourcerect="0,392,416,120" depth="0.509" origin="0.5,0.0" scale="true" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+	<Item name="window door" identifier="fullwindoweddoor" tags="door" scale="0.5" health="100" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="false" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
+    <Sprite texture="door.png" sourcerect="0,0,49,416" depth="0.51" origin="0.5,0.5" />
+    <DecorativeSprite texture="door.png" sourcerect="49,0,49,416" depth="0.89" origin="0.5,0.5"/>
+    <Door window="0,0,50,400" canbepicked="true" canbeselected="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="0.7,1">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" />
+      <Sprite texture="door.png" sourcerect="106,0,50,416" depth="0.05" origin="0.5,0.0" />
+      <WeldedSprite texture="door.png" sourcerect="203,0,65,377" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="door.png" sourcerect="392,0,120,416" depth="0.509" origin="0.5,0.0" scale="true" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="window hatch with buttons" identifier="windowhatchwbuttons" allowedlinks="gap,hull,structure,item" linkable="true" tags="door" scale="0.5" health="100" requirebodyinsidetrigger="false" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" ondamagedthreshold="10" allowrotatingineditor="false">
+    <Upgrade gameversion="0.9.7.0" spritedepth="0.7"/>
+    <Sprite texture="hatch.png" sourcerect="0,0,256,98" depth="0.7" origin="0.5,0.5" />
+    <DecorativeSprite texture="hatch.png" sourcerect="0,234,256,193" depth="0.89" origin="0.5,0.5"/>
+    <Door canbeselected="true" window="0,0,250,100" canbepicked="true" horizontal="true" pickkey="Action" msg="ItemMsgOpen" PickingTime="7.5" shadowscale="1,0.8" hasintegratedbuttons="true">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" optional="true"/>
+      <Requireditem items="idcard" type="Picked" optional="true"/>
+      <Sprite texture="hatch.png" sourcerect="256,0,256,38" depth="0.05" origin="0.0,0.5" />
+      <WeldedSprite texture="hatch.png" sourcerect="0,100,227,75" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="hatch.png" sourcerect="256,45,256,114" depth="0.509" origin="0.0,0.5" scale="true" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <trigger x="170" y="51" width="70" height="200" />
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="window hatch" identifier="windowhatch" allowedlinks="gap,hull,structure,item" linkable="true" tags="door" scale="0.5" health="100" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" ondamagedthreshold="10" allowrotatingineditor="false">
+    <Upgrade gameversion="0.9.7.0" spritedepth="0.7"/>
+    <Sprite texture="hatch.png" sourcerect="0,0,256,98" depth="0.7" origin="0.5,0.5" />
+    <Door canbeselected="true" window="0,0,250,100" canbepicked="true" horizontal="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="1,0.8">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" />
+      <Sprite texture="hatch.png" sourcerect="256,0,256,38" depth="0.05" origin="0.0,0.5" />
+      <WeldedSprite texture="hatch.png" sourcerect="0,100,227,75" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="hatch.png" sourcerect="256,45,256,114" depth="0.509" origin="0.0,0.5" scale="true" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+</Items>

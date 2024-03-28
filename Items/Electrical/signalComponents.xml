@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+	<Item name="gate component" identifier="concorde_gatecomponent" category="Electrical" Tags="smallitem,signal,logic,circuitboxcomponent" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true" signalcomponentcolor="#694341">
+		<Price baseprice="100" minleveldifficulty="15">
+		  <Price storeidentifier="merchantoutpost" />
+		  <Price storeidentifier="merchantcity" sold="false"/>
+		  <Price storeidentifier="merchantresearch" multiplier="1.25" />
+		  <Price storeidentifier="merchantmilitary" />
+		  <Price storeidentifier="merchantmine" />
+		  <Price storeidentifier="merchantengineering" multiplier="0.9" />
+		</Price>
+		<PreferredContainer primary="engcab"/>
+		<PreferredContainer secondary="wreckengcab,abandonedengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+		<Deconstruct time="10">
+		  <Item identifier="fpgacircuit" />
+		</Deconstruct>
+		<Fabricate suitablefabricators="fabricator" requiredtime="10">
+		  <RequiredItem identifier="fpgacircuit" />
+		</Fabricate>
+		<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,388,63,57" origin="0.5,0.5" />
+		<Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="64,128,32,32" origin="0.5,0.5" canflipx="false" />
+		<RelayComponent canbeselected="true" vulnerabletoemp="false" canbeoverloaded="false">
+		  <GuiFrame relativesize="0.2,0.14" minsize="450,160" anchor="Center" style="ItemUI" />
+		</RelayComponent>
+		<Body width="31" height="25" density="15" />
+		<Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+		  <RequiredItem items="wrench" type="Equipped" />
+		</Holdable>
+		<ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+		  <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+		  <RequiredItem items="screwdriver" type="Equipped" />
+		  <input name="signal_in1" displayname="connection.signalinx~[num]=1" />
+		  <input name="signal_in2" displayname="connection.signalinx~[num]=2" />
+		  <input name="signal_in3" displayname="connection.signalinx~[num]=3" />
+		  <input name="signal_in4" displayname="connection.signalinx~[num]=4" />
+		  <input name="toggle" displayname="connection.togglestate" />
+		  <input name="set_state" displayname="connection.setstate" />
+		  <output name="signal_out1" displayname="connection.signaloutx~[num]=1" />
+		  <output name="signal_out2" displayname="connection.signaloutx~[num]=2" />
+		  <output name="signal_out3" displayname="connection.signaloutx~[num]=3" />
+		  <output name="signal_out4" displayname="connection.signaloutx~[num]=4" />
+		  <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
+		</ConnectionPanel>
+	</Item>
+	<Item name="D latch" identifier="concorde_dlatch" category="Electrical" Tags="smallitem,signal,logic,circuitboxcomponent" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true" signalcomponentcolor="#694341">
+		<Price baseprice="100" minleveldifficulty="15">
+		  <Price storeidentifier="merchantoutpost" />
+		  <Price storeidentifier="merchantcity" sold="false"/>
+		  <Price storeidentifier="merchantresearch" multiplier="1.25" />
+		  <Price storeidentifier="merchantmilitary" />
+		  <Price storeidentifier="merchantmine" />
+		  <Price storeidentifier="merchantengineering" multiplier="0.9" />
+		</Price>
+		<PreferredContainer primary="engcab"/>
+		<PreferredContainer secondary="wreckengcab,abandonedengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+		<Deconstruct time="10">
+		  <Item identifier="fpgacircuit" />
+		</Deconstruct>
+		<Fabricate suitablefabricators="fabricator" requiredtime="10">
+		  <RequiredItem identifier="fpgacircuit" />
+		</Fabricate>
+		<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,388,63,57" origin="0.5,0.5" />
+		<Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="64,128,32,32" origin="0.5,0.5" canflipx="false" />
+		<Body width="31" height="25" density="15" />
+		<Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+		  <RequiredItem items="wrench" type="Equipped" />
+		</Holdable>
+		<RelayComponent canbeselected="true" vulnerabletoemp="false" canbeoverloaded="false">
+		  <GuiFrame relativesize="0.2,0.14" minsize="450,160" anchor="Center" style="ItemUI" />
+		</RelayComponent>
+		<ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+		  <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+		  <RequiredItem items="screwdriver" type="Equipped" />
+		  <input name="toggle" displayname="connection.togglestate" />
+		  <input name="set_state" displayname="connection.setstate" />
+		  <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
+		</ConnectionPanel>
+	</Item>
+	<Item name="toggle motion detector" identifier="concorde_motiondetector" category="Electrical" Tags="smallitem,sensor" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Price baseprice="130" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Upgrade gameversion="0.9.5.0" scale="0.5" />
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="copper" />
+      <Item identifier="silicon" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredSkill identifier="electrical" level="30" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="silicon" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,256,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="0,288,48,48" origin="0.5,0.5" />
+    <MotionSensor range="100" canbeselected="true" />
+    <Body width="42" height="36" density="15" />
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench" type="Equipped" />
+    </Holdable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+	  	<input name="toggle" displayname="connection.togglestate" />
+		<input name="set_state" displayname="connection.setstate" />
+      	<output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
+    </ConnectionPanel>
+  </Item>
+</Items>

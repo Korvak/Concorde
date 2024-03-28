@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="English" nowhitespace="false" translatedname="English">
+<!-- tutorials' text -->
+<korvaksub_submarine_tutorial>
+Cool tutorial Huh?\n
+This is a tutorial alright.\n
+Use the submarine as you please.
+
+</korvaksub_submarine_tutorial>
+<korvaksub_drone_tutorial>
+Using a drone is note that easy.\n\n
+It will become easier with time.
+</korvaksub_drone_tutorial>
+<!-- connections -->
+<connection.turretaiminginx>position_in_[num]</connection.turretaiminginx>
+<connection.turrettriggerinx>trigger_in_[num]</connection.turrettriggerinx>
+<connection.turretaimingoutx>position_out_[num]</connection.turretaimingoutx>
+<connection.turrettriggeroutx>trigger_out_[num]</connection.turrettriggeroutx>
+<connection.setstatex>set_state_[num]</connection.setstatex>
+<connection.togglestatex>toggle_state_[num]</connection.togglestatex>
+
+</infotexts>
