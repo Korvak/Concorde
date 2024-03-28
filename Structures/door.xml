@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Items>
-<Item name="forcefield" identifier="forcefield" tags="door,weldable" scale="0.5" health="100" damagedbyrepairtools="false" damagedbymonsters="true" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.3" allowrotatingineditor="true" allowedlinks="structure,item" ondamagedthreshold="2" linkable="true">
+<Item name="forcefield" identifier="forcefield" tags="door,weldable" scale="0.5" health="1000" damagedbyrepairtools="false" damagedbymonsters="true" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.3" allowrotatingineditor="true" allowedlinks="structure,item" ondamagedthreshold="2" linkable="true">
     <Sprite texture="%ModDir%/Structures/forcefield.png" sourcerect="0,0,49,416" depth="0.51" origin="0.5,0.5" />
     <Door canbeselected="true" canbepicked="false" shadowscale="0.7,1">
       <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
@@ -19,7 +19,7 @@
         <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
         <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
       </StatusEffect>
-      <StatusEffect type="OnBroken" target="This" delay="5" condition="100">
+      <StatusEffect type="OnBroken" target="This" delay="30" condition="100" setvalue="true">
         <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
         <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
       </StatusEffect>
@@ -34,7 +34,7 @@
       <LightTexture texture="Content/Lights/pointlight_bounce.png" origin="0.5,0.5" />
       <!-- additive "top light" -->
       <sprite texture="%ModDir%/Structures/forcefield.png" sourcerect="158,0,42,416" />
-      <StatusEffect type="OnBroken" target="This" delay="5" condition="100">
+      <StatusEffect type="OnBroken" target="This" delay="30" condition="100" setvalue="true"/>
     </LightComponent>
     <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
       <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
