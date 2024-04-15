@@ -16,6 +16,7 @@
   <!-- Self-destruction after 45 seconds-->
   <StatusEffect type="OnUse" target="This" IsOn="false" delay="45" setvalue="true" condition="-200" />
   <StatusEffect type="OnImpact" target="This" Condition="-200.0" disabledeltatime="true" />
+  <StatusEffect type="OnSuccess" target="This" Condition="-200.0" disabledeltatime="true" />
   <!-- Effects when taking damage-->
   <StatusEffect type="OnDamaged" target="This" disabledeltatime="true" condition="-200" setvalue="true">
     <particleemitter particle="shrapnel" drawontop="true" particleamount="5" velocitymin="100" velocitymax="500" anglemin="0" anglemax="360" distancemin="0" distancemax="20" scalemin="0.1" scalemax="0.35" />

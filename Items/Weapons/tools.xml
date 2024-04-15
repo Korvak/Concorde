@@ -1,0 +1,63 @@
+<Items>
+    <Item name="antiballast spray" identifier="antiballast_spray" category="Equipment" Tags="smallitem,weapon,antiballast_tool,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+        <Upgrade gameversion="0.10.0.0" scale="0.5" />
+        <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.2" notcampaign="true"/>
+        <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.1"/>
+        <PreferredContainer secondary="armcab,weaponholder"/>
+        <Price baseprice="105" sold="false">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="1.25" minavailable="1" />
+        </Price>
+        <!--<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,64,64,64" />-->
+        <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,64,64,64" />
+        <Sprite texture="Content/Items/Tools/tools.png" sourcerect="154,22,158,77" depth="0.55" origin="0.5,0.5" />
+        <!-- the item takes 10 seconds to break down in a deconstructor and turns into steel and plastic -->
+        <Deconstruct time="10">
+            <Item identifier="steel" />
+            <Item identifier="rubber" />
+        </Deconstruct>
+        <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+            <RequiredSkill identifier="mechanical" level="30" />
+            <RequiredSkill identifier="weapons" level="20" />
+            <RequiredItem identifier="steel" amount="2" />
+            <RequiredItem identifier="rubber" amount="2" />
+        </Fabricate>
+        <!-- physics body -->
+        <Body width="150" height="77" density="25" />
+        <!-- the character will hold the item 50 pixels in front of him, with his hands at the handle1 and handle2 positions -->
+        <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" msg="ItemMsgPickUpSelect" />
+        <RepairTool structurefixamount="0.0" hititems="true" IgnoreCharacters="true" extinguishamount="30.0"  usablein="Air" range="500" barrelpos="35,10" fireprobability="0" repairmultiple="true" RepairMultipleWalls="false" repairthroughwalls="false" repairthroughholes="true" combatpriority="5" spread="25" unskilledspread="25">
+        <!-- the item must contain a welding fuel tank for it to work -->
+        <RequiredItems items="antiballastfuel" type="Contained" msg="ItemMsgWeldingFuelRequired" />
+        <RequiredSkill identifier="weapons" level="20" />
+        <ParticleEmitterHitCharacter particle="fixfoamgoosplash" particlespersecond="20" anglemin="265" anglemax="275" velocitymin="10" velocitymax="50" />
+        <ParticleEmitter particle="fixfoam" anglemin="0" anglemax="0" velocitymin="800" velocitymax="1000" particlespersecond="32" />
+        <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="1000" volume="0.5"  loop="true"/>
+        <!-- when using, the contained fuel tank will detoriate (= lose fuel) -->
+        <StatusEffect type="OnUse" targettype="Contained" targets="antiballast_grenade" Condition="-10.0" />
+        <!-- explodes characters and tries to do damage only on ballast-->
+        <StatusEffect type="OnUse">
+            <Explosion range="400" force="0.0" showEffects="false" ignorecover="true" structuredamage="0" ballastfloradamage="10" itemdamage="0" />
+        </StatusEffect>
+        <!-- consume oxygen from the hull -->
+        <StatusEffect type="OnUse" target="Hull" Oxygen="-10000"/>
+        <StatusEffect type="OnFailure" target="Character">
+            <Affliction identifier="stun" strength="0.2" />
+        </StatusEffect>
+        <LightComponent LightColor="255,174,121,255" Flicker="0.5" Range="500">
+            <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+        </LightComponent>
+        </RepairTool>
+        <!-- one antiballast tank can be contained inside the tool -->
+        <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="8,-20" containedspritedepth="0.56" containedstateindicatorstyle="tank">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+        <Containable items="antiballastfuel" />
+        </ItemContainer>
+        <aitarget sightrange="2000" soundrange="200" fadeouttime="5" />
+        <SkillRequirementHint identifier="weapons" level="20" />
+    </Item>
+</Items>
