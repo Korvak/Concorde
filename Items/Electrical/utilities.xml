@@ -1,0 +1,97 @@
+<Items>
+    <Item name="bacta tank" identifier="concorde_hospitalbed" texturescale="1.0,1.0" scale="0.5" noninteractable="false" category="Decorative" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbyrepairtools="true" damagedbymeleeweapons="true" health="300" >
+        <Upgrade gameversion="0.12.0.0" noninteractable="false" />
+        <Body width="330" height="650" bodytype="Static" />
+        <sprite name="guardianpod_background" texture="Content/Items/Alien/guardianpod.png" sourcerect="8,0,338,658" depth="0.6" origin="0.5,0.5" />
+        <DecorativeSprite name="guardianpod" texture="Content/Items/Alien/guardianpod.png" sourcerect="345,0,338,658" depth="0.03" origin="0.5,0.5" />
+        <BrokenSprite name="guardianpod_broken_gradual" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.02" fadein="true" maxcondition="99" />
+        <BrokenSprite name="guardianpod_broken" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.01" fadein="false" />
+        <Controller UserPos="100,-50" direction="Right" hidehud="true" canbeselected="true" drawuserbehind="false" noninteractablewhenflippedy="false" powerconsumption="500.0" minvoltage="0.5">
+            <!-- don't allow laying in bed when wearing an exosuit -->
+            <RequiredItem items="deepdivinglarge" type="Picked" requireempty="true" />
+            <limbposition limb="Torso" position="150,-230" />
+            <limbposition limb="Head" position="250,-200" />
+            <limbposition limb="Waist" position="250,-400" />
+            <limbposition limb="RightFoot" position="150,-600" />
+            <limbposition limb="LeftFoot" position="150,-600" />
+            <limbposition limb="RightHand" position="250,-350" allowusinglimb="false" />
+            <limbposition limb="LeftHand" position="250,-350" allowusinglimb="false" />
+            <StatusEffect type="OnPicked" target="This" timeframe="0" setvalue="true" />
+            <StatusEffect type="OnActive" target="This,Character" comparison="And">
+                <Conditional condition="gt 0.5" />
+                <Conditional IsDead="false" />
+                <ReduceAffliction type="damage" strength="0.05" />
+                <ReduceAffliction identifier="bloodloss" strength="2.5" />
+                <ReduceAffliction identifier="bleeding" strength="1" />
+                <ReduceAffliction identifier="nausea" strength="0.1" />
+                <ReduceAffliction identifier="oxygenlow" strength="0.1" />
+                <ReduceAffliction identifier="opiatewithdrawal" strength="0.1" />
+                <ReduceAffliction identifier="opiateaddiction" strength="0.1" />
+                <ReduceAffliction identifier="drunk" strength="0.1" />
+                <sound file="Content/Items/OxygenGenerator/OxygenGenerator.ogg" type="OnActive" range="500.0" volume="0.1" loop="true"/>  
+            </StatusEffect>
+        </Controller>
+        <!-- for power consumption-->
+        <OxygenGenerator powerconsumption="500.0" minvoltage="0.5" canbeselected="true" msg="ItemMsgInteractSelect">
+            <poweronsound file="Content/Items/PowerOnLight2.ogg" range="1500" loop="false" />
+            <StatusEffect type="OnFire" target="This" Condition="-0.5" tags="onfire" duration="1" stackable="false" />
+            <StatusEffect type="OnDamaged" target="This">
+                <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact1.ogg" range="3000" selectionmode="Random" />
+                <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact2.ogg" range="3000" selectionmode="Random" />
+                <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact3.ogg" range="3000" selectionmode="Random" />
+                <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact4.ogg" range="3000" selectionmode="Random" />
+                <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact5.ogg" range="3000" selectionmode="Random" />
+                <ParticleEmitter particle="plasmaspark" drawontop="true" particleamount="10" scalemin="0.3" scalemax="0.5" velocitymin="300" velocitymax="800" anglemin="0" anglemax="360" />
+            </StatusEffect>
+            <StatusEffect type="OnBroken" target="This">
+                <Sound file="Content/Sounds/Damage/GlassBreak1.ogg" range="5000" selectionmode="Random" />
+                <Sound file="Content/Sounds/Damage/GlassBreak2.ogg" range="5000" selectionmode="Random" />
+                <Sound file="Content/Sounds/Damage/GlassBreak3.ogg" range="5000" selectionmode="Random" />
+                <Sound file="Content/Sounds/Damage/GlassBreak4.ogg" range="5000" selectionmode="Random" />
+                <ParticleEmitter particle="plasmaspark" drawontop="true" particleamount="50" scalemin="0.5" scalemax="1" velocitymin="600" velocitymax="1000" anglemin="0" anglemax="360" />
+                <Explosion range="100.0" structuredamage="0" itemdamage="0" force="5" severlimbsprobability="0" decal="explosion" showeffects="true" flames="false" applyfireeffects="false">
+                <Affliction identifier="explosiondamage" strength="50" />
+                <Affliction identifier="stun" strength="5" />
+                <StatusEffect type="OnUse" target="NearbyCharacters" range="60" disabledeltatime="true">
+                    <Conditional group="ancientalien" />
+                    <ReduceAffliction identifier="damageimmunity" amount="100" />
+                </StatusEffect>
+                </Explosion>
+            </StatusEffect>
+        </OxygenGenerator>
+        <LightComponent range="200" lightcolor="255,62,62,255" IsOn="false" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flicker="0.8" flickerspeed="0.1" pulsefrequency="0.1" pulseamount="0.1">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
+        </LightComponent>
+        <LightComponent range="0" powerconsumption="5.0" minvoltage="0.5" lightcolor="224,81,255,70" IsOn="true" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flickerspeed="0.1">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
+        </LightComponent>
+        <ConnectionPanel selectkey="Action" canbeselected="true" hudpriority="10" msg="ItemMsgRewireScrewdriver">
+            <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel"/>
+            <RequiredSkill identifier="electrical" level="55" />
+            <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+                <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+                <Explosion range="100.0" force="1.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+                <Affliction identifier="stun" strength="4" />
+                <Affliction identifier="burn" strength="5" />
+            </StatusEffect>
+            <RequiredItem items="screwdriver" type="Equipped"/>
+            <input name="power_in" displayname="connection.powerin"/>
+            <output name="condition_out" displayname="connection.conditionout" />
+            <output name="load_value_out" displayname="connection.loadvalueout" />
+            <output name="power_value_out" displayname="connection.powervalueout" />
+        </ConnectionPanel>
+        <Repairable selectkey="Action" header="mechanicalrepairsheader" deteriorationspeed="0.05" mindeteriorationdelay="60" maxdeteriorationdelay="120" RepairThreshold="80" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+            <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+            <RequiredSkill identifier="mechanical" level="55" />
+            <RequiredItem items="wrench" type="equipped" />
+            <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+            <ParticleEmitter particle="smoke" particlespersecond="2" scalemin="1" scalemax="2.5" anglemax="360" velocitymin="-50" velocitymax="50" mincondition="15.0" maxcondition="50.0" />
+            <ParticleEmitter particle="heavysmoke" particlespersecond="2" scalemin="1.0" scalemax="2.5" anglemax="360" distancemax="60" mincondition="0.0" maxcondition="15.0" />
+            <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+                <Sound file="Content/Items/MechanicalRepairFail.ogg" range="1000" />
+                <Affliction identifier="lacerations" strength="5" />
+                <Affliction identifier="stun" strength="4" />
+            </StatusEffect>
+        </Repairable>
+    </Item>
+</Items>

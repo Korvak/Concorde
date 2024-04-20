@@ -60,4 +60,22 @@
         <aitarget sightrange="2000" soundrange="200" fadeouttime="5" />
         <SkillRequirementHint identifier="weapons" level="20" />
     </Item>
+      <Item name="super propulsor" identifier="propulsor" category="Equipment" Tags="mediumitem,fireextinguisher,provocative" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_light" donttransferbetweensubs="true">
+    <Upgrade gameversion="0.9.600.0" Tags="mediumitem,fireextinguisher,provocative" />
+    <PreferredContainer primary="extinguisherholder" spawnprobability="1.0"/>
+    <PreferredContainer secondary="engcab,reactorcab"/>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" depth="0.55" sourcerect="161,105,64,128" origin="0.5,0.5" />
+    <Body width="30" height="100" density="8" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" aimpos="40,-20" handle1="-6,10" handle2="-10,40" msg="ItemMsgPickUpSelect" />
+    <RepairTool extinguishamount="60.0" range="500" barrelpos="21,25" repairthroughholes="true" hititems="false" IgnoreCharacters="true">
+      <ParticleEmitter particle="extinguisher" velocitymin="1000.0" velocitymax="1650.0" particlespersecond="100" />
+      <StatusEffect type="OnUse" targettype="This" Condition="-1.0" />
+      <sound file="Content/Items/Tools/Extinguisher.ogg" type="OnUse" range="500.0" loop="true" />
+    </RepairTool>
+    <Propulsion force="-500" usablein="water" particles="bubbles" />
+    <Propulsion force="-2000" usablein="Air" particles="bubbles" />
+    <aitarget sightrange="1000" soundrange="1000" fadeouttime="1" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
 </Items>

@@ -10,7 +10,7 @@
     <target Tag="owner" State="Avoid" Priority="10" ReactDistance="750" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Sweep" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
     <SwarmBehavior mindistfromclosest="200" maxdistfromcenter="1000" cohesion="0.5" />
   </ai>
-  <Attack target="This" Condition="-200.0" disabledeltatime="true" setvalue="true"/>
+  <Attack target="This" Condition="-200.0" disabledeltatime="true" setvalue="true" />
   <!-- Turns lights on and make destructible after launch-->
   <StatusEffect type="OnUse" target="This" IsOn="true" Indestructible="false" />
   <!-- Self-destruction after 45 seconds-->
