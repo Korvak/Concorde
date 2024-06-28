@@ -1,5 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
+	<Item name="test item controller" identifier="concorde_aliengenerator" category="Alien" Tags="alien,aliengenerator" scale="0.3">
+		<Sprite texture="Content/Items/Alien/Legacy/AlienRuin_Legacy.png" depth="0.8" sourcerect="512,0,512,573" />
+		<LightComponent AllowInGameEditing="false" lightcolor="112,146,190,50" canbeselected="false" range="800.0" IsOn="true">
+		<Sprite texture="Content/Items/Alien/Legacy/AlienRuin_Legacy.png" sourcerect="0,486,176,176" origin="0.47, 0.3" alpha="1.0" />
+		</LightComponent>
+		<ItemContainer capacity="1" maxstacksize="1" canbeselected="true" hideitems="false" itempos="264,-321" containedspritedepth="0.01" autointeractwithcontained="true">
+		<GuiFrame relativesize="0.11,0.17" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+		<StatusEffect type="Always" target="This" Charge="-10.0" />
+		<Containable items="alienpowercell">
+			<StatusEffect type="OnContaining" target="This" Charge="100.0" setvalue="true" />
+		</Containable>
+		</ItemContainer>
+		<PowerContainer capacity="10.0" canbeselected="false" maxrechargespeed="1000.0" maxoutput="10000.0" />
+		<ConnectionPanel canbeselected="true" hudpriority="10">
+			<GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+			<RequiredItem items="screwdriver" type="Equipped" />
+			<!-- break the item when a shutdown signal is received -->
+			<input name="shutdown" displayname="connection.shutdown">
+				<StatusEffect type="OnUse" target="This" condition="-100" setvalue="true" />
+			</input>
+			<output name="power_out" displayname="connection.powerout" />
+			<output name="load_value_out" displayname="connection.loadvalueout" />
+			<output name="power_value_out" displayname="connection.powervalueout" />
+		</ConnectionPanel>
+	</Item>
 	<Item name="gate component" identifier="concorde_gatecomponent" category="Electrical" Tags="smallitem,signal,logic,circuitboxcomponent" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true" signalcomponentcolor="#694341">
 		<Price baseprice="100" minleveldifficulty="15">
 		  <Price storeidentifier="merchantoutpost" />

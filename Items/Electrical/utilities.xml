@@ -94,8 +94,88 @@
             </StatusEffect>
         </Repairable>
     </Item>
-    
-
+    <Item name="cryomask" identifier="concorde_cryomask" scale="0.5" category="Diving,Equipment" Tags="smallitem,diving,lightdiving" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
+        <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="515,322,57,62" origin="0.5,0.5" />
+        <Sprite name="Diving Mask" texture="Content/Items/Jobgear/headgears.png" depth="0.55" sourcerect="226,326,69,68" origin="0.5,0.5" />
+        <Body width="40" height="35" density="15" />
+        <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Diving Mask Wearable" texture="Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" hideotherwearables="false" sourcerect="226,326,69,68" origin="0.4,0.3" hidewearablesoftype="moustache,beard" />
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" setvalue="true">
+                <Affliction identifier="stun" strength="10.0" />
+                <ReduceAffliction type="damage" strength="10.0" />
+                <ReduceAffliction identifier="bloodloss" strength="10.0" />
+                <ReduceAffliction identifier="bleeding" strength="10.0" />
+                <ReduceAffliction identifier="burn" strength="10.0" />
+                <ReduceAffliction identifier="radiationsickness" amount="10.0" />
+                <Affliction identifier="pressurestabilized" amount="90.0" />
+        </StatusEffect>
+        </Wearable>
+        <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+        <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+        <Containable items="oxygensource">
+            <StatusEffect type="OnWearing" target="Character" OxygenAvailable="1000.0" UseHullOxygen="false" />
+            <StatusEffect type="OnWearing" target="Contained" Condition="-0.3" comparison="And">
+            <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
+            <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
+            <Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
+            </StatusEffect>
+        </Containable>
+        <Containable items="oxygenitetank">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.2" setvalue="true" targetslot="0" comparison="And">
+            <Conditional IsDead="false" />
+            <Conditional DecreasedOxygenConsumption="lt 99" />
+            <Conditional NeedsAir="true" />
+            </StatusEffect>
+        </Containable>
+        <Containable items="weldingfueltank" blameequipperfordeath="true">
+            <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
+            <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
+            <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
+            <Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" Oxygen="-5.0" comparison="And">
+            <Conditional IsDead="false" />
+            <Conditional DecreasedOxygenConsumption="lt 99" />
+            <Conditional NeedsAir="true" />
+            </StatusEffect>
+        </Containable>
+        <Containable items="incendiumfueltank" blameequipperfordeath="true">
+            <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
+            <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
+            <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
+            <Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" comparison="And" targetlimb="Torso">
+            <Affliction identifier="burn" amount="20.0"  />
+            <Conditional IsDead="false" />
+            <Conditional DecreasedOxygenConsumption="lt 99" />
+            <Conditional NeedsAir="true" />
+            </StatusEffect>
+        </Containable>
+        </ItemContainer>
+    </Item>
+    <Item name="infection dispenser" identifier="concorde_infectdischarge" tags="dischargecoil" category="Machine,Weapon" Scale="0.5">
+        <Sprite texture="Content/Items/Weapons/Turrets.png" depth="0.01" sourcerect="557,945,464,76" />
+        <ElectricalDischarger duration="0.25" outdoorsonly="true" powerconsumption="10000">
+        <Attack targetimpulse="50">
+            <Affliction identifier="sufforinpoisoning" strength="100" amount="100"/>
+            <Affliction identifier="cyanidepoisoning" strength="100" amount="100"/>
+            <Affliction identifier="huskinfection" strength="100" amount="100" />
+        </Attack>
+        <StatusEffect type="OnUse" target="This">
+            <!-- we add the gas vent effect here or the watcher one-->
+            <ParticleEmitter particle="risingbubbles" anglemin="0" anglemax="360" particleamount="50" velocitymin="50" velocitymax="100" scalemin="1" scalemax="2" />
+        </StatusEffect>
+        </ElectricalDischarger>
+        <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <input name="power_in" displayname="connection.powerin" />
+        <input name="trigger_in" displayname="connection.turrettriggerin"/>
+        </ConnectionPanel>
+        <Upgrade gameversion="0.10.0.0" scale="*0.5" />
+    </Item>
 
 
 </Items>
