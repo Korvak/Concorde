@@ -31,26 +31,26 @@
         <!-- the character will hold the item 50 pixels in front of him, with his hands at the handle1 and handle2 positions -->
         <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" msg="ItemMsgPickUpSelect" />
         <RepairTool structurefixamount="0.0" hititems="true" IgnoreCharacters="true" extinguishamount="30.0"  usablein="Air" range="500" barrelpos="35,10" fireprobability="0" repairmultiple="true" RepairMultipleWalls="false" repairthroughwalls="false" repairthroughholes="true" combatpriority="5" spread="25" unskilledspread="25">
-        <!-- the item must contain a welding fuel tank for it to work -->
-        <RequiredItems items="antiballastfuel" type="Contained" msg="ItemMsgWeldingFuelRequired" />
-        <RequiredSkill identifier="weapons" level="20" />
-        <ParticleEmitterHitCharacter particle="fixfoamgoosplash" particlespersecond="20" anglemin="265" anglemax="275" velocitymin="10" velocitymax="50" />
-        <ParticleEmitter particle="fixfoam" anglemin="0" anglemax="0" velocitymin="800" velocitymax="1000" particlespersecond="32" />
-        <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="1000" volume="0.5"  loop="true"/>
-        <!-- when using, the contained fuel tank will detoriate (= lose fuel) -->
-        <StatusEffect type="OnUse" targettype="Contained" targets="antiballast_grenade" Condition="-10.0" />
-        <!-- explodes characters and tries to do damage only on ballast-->
-        <StatusEffect type="OnUse">
-            <Explosion range="400" force="0.0" showEffects="false" ignorecover="true" structuredamage="0" ballastfloradamage="10" itemdamage="0" />
-        </StatusEffect>
-        <!-- consume oxygen from the hull -->
-        <StatusEffect type="OnUse" target="Hull" Oxygen="-10000"/>
-        <StatusEffect type="OnFailure" target="Character">
-            <Affliction identifier="stun" strength="0.2" />
-        </StatusEffect>
-        <LightComponent LightColor="255,174,121,255" Flicker="0.5" Range="500">
-            <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
-        </LightComponent>
+            <!-- the item must contain a welding fuel tank for it to work -->
+            <RequiredItems items="antiballastfuel" type="Contained" msg="ItemMsgWeldingFuelRequired" />
+            <RequiredSkill identifier="weapons" level="20" />
+            <ParticleEmitterHitCharacter particle="fixfoamgoosplash" particlespersecond="20" anglemin="265" anglemax="275" velocitymin="10" velocitymax="50" />
+            <ParticleEmitter particle="fixfoam" anglemin="0" anglemax="0" velocitymin="800" velocitymax="1000" particlespersecond="32" />
+            <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="1000" volume="0.5"  loop="true"/>
+            <!-- when using, the contained fuel tank will detoriate (= lose fuel) -->
+            <StatusEffect type="OnUse" targettype="Contained" targets="antiballast_grenade" Condition="-10.0" />
+            <!-- explodes characters and tries to do damage only on ballast-->
+            <StatusEffect type="OnUse">
+                <Explosion range="400" force="0.0" showEffects="false" ignorecover="true" structuredamage="0" ballastfloradamage="10" itemdamage="0" />
+            </StatusEffect>
+            <!-- consume oxygen from the hull -->
+            <StatusEffect type="OnUse" target="Hull" Oxygen="-10000"/>
+            <StatusEffect type="OnFailure" target="Character">
+                <Affliction identifier="stun" strength="0.2" />
+            </StatusEffect>
+            <LightComponent LightColor="255,174,121,255" Flicker="0.5" Range="500">
+                <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+            </LightComponent>
         </RepairTool>
         <!-- one antiballast tank can be contained inside the tool -->
         <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="8,-20" containedspritedepth="0.56" containedstateindicatorstyle="tank">

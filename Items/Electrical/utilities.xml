@@ -94,6 +94,35 @@
             </StatusEffect>
         </Repairable>
     </Item>
+    <Item name="test teleporter" identifier="concorde_teleport" texturescale="1.0,1.0" scale="0.5" category="Decorative" >
+        <Upgrade gameversion="0.12.0.0" noninteractable="false" />
+        <Body width="330" height="650" />
+        <sprite name="guardianpod_background" texture="Content/Items/Alien/guardianpod.png" sourcerect="8,0,338,658" depth="0.6" origin="0.5,0.5" />
+        <DecorativeSprite name="guardianpod" texture="Content/Items/Alien/guardianpod.png" sourcerect="345,0,338,658" depth="0.03" origin="0.5,0.5" />
+        <BrokenSprite name="guardianpod_broken_gradual" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.02" fadein="true" maxcondition="99" />
+        <BrokenSprite name="guardianpod_broken" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.01" fadein="false" />
+        <Controller UserPos="100,-50" direction="Right" hidehud="true" canbeselected="true" drawuserbehind="false" noninteractablewhenflippedy="false" powerconsumption="500.0" minvoltage="0.5">
+            <!-- don't allow laying in bed when wearing an exosuit -->
+            <RequiredItem items="deepdivinglarge" type="Picked" requireempty="true" />
+            <limbposition limb="Torso" position="2150,-230" />
+            <limbposition limb="Head" position="2250,-200" />
+            <limbposition limb="Waist" position="2250,-400" />
+            <limbposition limb="RightFoot" position="2150,-600" />
+            <limbposition limb="LeftFoot" position="2150,-600" />
+            <limbposition limb="RightHand" position="2250,-350" allowusinglimb="true" />
+            <limbposition limb="LeftHand" position="2250,-350" allowusinglimb="true" />
+            <StatusEffect type="OnPicked" target="This" timeframe="0" setvalue="true" />
+            <StatusEffect type="OnActive" target="This,Character" delay="2">
+                <Remove/>
+            </StatusEffect>
+        </Controller>
+        <LightComponent range="200" lightcolor="255,62,62,255" IsOn="false" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flicker="0.8" flickerspeed="0.1" pulsefrequency="0.1" pulseamount="0.1">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
+        </LightComponent>
+        <LightComponent range="0" powerconsumption="5.0" minvoltage="0.5" lightcolor="224,81,255,70" IsOn="true" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flickerspeed="0.1">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
+        </LightComponent>
+    </Item>
     <Item name="cryomask" identifier="concorde_cryomask" scale="0.5" category="Diving,Equipment" Tags="smallitem,diving,lightdiving" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
         <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="515,322,57,62" origin="0.5,0.5" />
         <Sprite name="Diving Mask" texture="Content/Items/Jobgear/headgears.png" depth="0.55" sourcerect="226,326,69,68" origin="0.5,0.5" />
@@ -155,27 +184,105 @@
         </Containable>
         </ItemContainer>
     </Item>
-    <Item name="infection dispenser" identifier="concorde_infectdischarge" tags="dischargecoil" category="Machine,Weapon" Scale="0.5">
-        <Sprite texture="Content/Items/Weapons/Turrets.png" depth="0.01" sourcerect="557,945,464,76" />
-        <ElectricalDischarger duration="0.25" outdoorsonly="true" powerconsumption="10000">
-        <Attack targetimpulse="50">
-            <Affliction identifier="sufforinpoisoning" strength="100" amount="100"/>
-            <Affliction identifier="cyanidepoisoning" strength="100" amount="100"/>
-            <Affliction identifier="huskinfection" strength="100" amount="100" />
-        </Attack>
-        <StatusEffect type="OnUse" target="This">
-            <!-- we add the gas vent effect here or the watcher one-->
-            <ParticleEmitter particle="risingbubbles" anglemin="0" anglemax="360" particleamount="50" velocitymin="50" velocitymax="100" scalemin="1" scalemax="2" />
+    <Item name="small gravity well" identifier="concorde_smallgravitysphere" category="Alien" linkable="true" scale="0.1">
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.84" sourcerect="21,1367,395,395" origin="0.5,0.5" />
+        <LightComponent range="600" lightcolor="140,197,180,111" IsOn="true" castshadows="true" allowingameediting="false" flicker="0.2" flickerspeed="5.0" pulsefrequency="0.2" pulseamount="0.4">
+        <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" origin="0.5,0.5" />
+        <StatusEffect type="Always" target="This">
+            <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="800.0" loop="true" dontmuffle="true" />
         </StatusEffect>
-        </ElectricalDischarger>
-        <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
-        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
-        <RequiredItem items="screwdriver" type="Equipped" />
-        <input name="power_in" displayname="connection.powerin" />
-        <input name="trigger_in" displayname="connection.turrettriggerin"/>
+        </LightComponent>
+        <!--Apply force towards the center at range 1000-->
+        <TriggerComponent triggeredby="Human, Item" force="100" radius="1000" distancebasedforce="false">
+        <StatusEffect type="OnActive" target="This">
+            <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1.25" />
+        </StatusEffect>
+        </TriggerComponent>
+        <ConnectionPanel canbeselected="true" hudpriority="10">
+            <RequiredItem items="screwdriver" type="Equipped" />
+            <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+            <input name="toggle" displayname="connection.togglestate" />
+            <input name="set_state" displayname="connection.setstate" />
+            <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
         </ConnectionPanel>
-        <Upgrade gameversion="0.10.0.0" scale="*0.5" />
     </Item>
-
-
+    <Item name="gravity well" identifier="concorde_gravitysphere" category="Alien" linkable="true" scale="0.5">
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.84" sourcerect="21,1367,395,395" origin="0.5,0.5" />
+        <LightComponent range="600" lightcolor="140,197,180,111" IsOn="true" castshadows="true" allowingameediting="false" flicker="0.2" flickerspeed="5.0" pulsefrequency="0.2" pulseamount="0.4">
+        <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" origin="0.5,0.5" />
+        <StatusEffect type="Always" target="This">
+            <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="800.0" loop="true" dontmuffle="true" />
+        </StatusEffect>
+        </LightComponent>
+        <!--Apply force towards the center at range 1000-->
+        <TriggerComponent triggeredby="Human, Item" force="100" radius="10000" distancebasedforce="false">
+        <StatusEffect type="OnActive" target="This">
+            <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1.25" />
+        </StatusEffect>
+        </TriggerComponent>
+        <ConnectionPanel canbeselected="true" hudpriority="10">
+            <RequiredItem items="screwdriver" type="Equipped" />
+            <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+            <input name="toggle" displayname="connection.togglestate" />
+            <input name="set_state" displayname="connection.setstate" />
+            <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
+        </ConnectionPanel>
+    </Item>
+    <Item name="item gravity well" identifier="concorde_itemgravitysphere" category="Alien" linkable="true" scale="0.5">
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.84" sourcerect="21,1367,395,395" origin="0.5,0.5" />
+        <LightComponent range="600" lightcolor="140,197,180,111" IsOn="true" castshadows="true" allowingameediting="false" flicker="0.2" flickerspeed="5.0" pulsefrequency="0.2" pulseamount="0.4">
+        <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" origin="0.5,0.5" />
+        <StatusEffect type="Always" target="This">
+            <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="800.0" loop="true" dontmuffle="true" />
+        </StatusEffect>
+        </LightComponent>
+        <!--Apply force towards the center at range 1000-->
+        <TriggerComponent triggeredby="Item" force="100" radius="10000" distancebasedforce="false">
+        <StatusEffect type="OnActive" target="This">
+            <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1.25" />
+        </StatusEffect>
+        </TriggerComponent>
+        <ConnectionPanel canbeselected="true" hudpriority="10">
+            <RequiredItem items="screwdriver" type="Equipped" />
+            <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+            <input name="toggle" displayname="connection.togglestate" />
+            <input name="set_state" displayname="connection.setstate" />
+            <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
+        </ConnectionPanel>
+    </Item>
+    <Item name="portable gravity well" identifier="concorde_portable_itemgravitysphere" category="Alien" linkable="true" scale="0.05">
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.84" sourcerect="21,1367,395,395" origin="0.5,0.5" />
+        <LightComponent range="100" lightcolor="140,197,180,111" IsOn="true" castshadows="true" allowingameediting="false" flicker="0.2" flickerspeed="5.0" pulsefrequency="0.2" pulseamount="0.4">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" origin="0.5,0.5" />
+        </LightComponent>
+        <Body width="60" height="60" density="30" />
+        <Holdable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" aimpos="0,0" msg="ItemMsgPickUpSelect">
+            <StatusEffect type="OnUse" target="This">
+                <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="800.0" loop="true" dontmuffle="true" />
+                <TriggerComponent triggeredby="Item" force="100" radius="10000" distancebasedforce="false">
+                    <StatusEffect type="OnActive" target="This">
+                        <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1.25" />
+                    </StatusEffect>
+                </TriggerComponent>
+            </StatusEffect>
+            <StatusEffect type="OnActive" target="This">
+                <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="800.0" loop="true" dontmuffle="true" />
+                <TriggerComponent triggeredby="Item" force="100" radius="10000" distancebasedforce="false">
+                    <StatusEffect type="OnActive" target="This">
+                        <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1.25" />
+                    </StatusEffect>
+                </TriggerComponent>
+            </StatusEffect>
+        </Holdable>
+        <ItemComponent characterusable="true">
+            <StatusEffect type="OnUse" target="This">
+                <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="800.0" loop="true" dontmuffle="true" />
+                <TriggerComponent triggeredby="Item" force="100" radius="10000" distancebasedforce="false">
+                    <StatusEffect type="OnActive" target="This">
+                        <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1.25" />
+                    </StatusEffect>
+                </TriggerComponent>
+            </StatusEffect>
+        </ItemComponent>
+    </Item>
 </Items>

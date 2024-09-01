@@ -13,7 +13,7 @@
         <DecorativeSprite texture="Content/Items/Containers/UnitLoadDevice.png" depth="0.85" sourcerect="0,457,567,446" origin="0.5,0.5" />
         <ItemContainer capacity="20" maxstacksize="1" canbeselected="true" hideitems="false" itempos="120,-364" iteminterval="150,80" itemsperrow="4" slotsperrow="5" msg="ItemMsgInteractSelect" containedspritedepths="0.651,0.652,0.651,0.652,0.651,0.651,0.652,0.651,0.652,0.651,0.651,0.652,0.651,0.652,0.651,0.651,0.652,0.651,0.652,0.651">
             <GuiFrame relativesize="0.3,0.4" anchor="Center" style="ItemUI" />
-            <Containable items="ammobox" />
+            <Containable items="ammobox,railgunammo,depthchargeammo" />
         </ItemContainer>
     </Item>
 </Items>
