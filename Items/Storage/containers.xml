@@ -16,4 +16,13 @@
             <Containable items="ammobox,railgunammo,depthchargeammo" />
         </ItemContainer>
     </Item>
+    <Item name="shell rack" identifier="concorde_shellrack" tags="container,railgunammocontainer,missileammocontainer,shellammocontainer" pickdistance="120" scale="0.5" canflipx="false" canflipy="false">
+    <Sprite texture="Content/Items/Containers/containers.png" depth="0.84" sourcerect="330,811,218,212" origin="0.5,0.5" />
+    <ItemContainer hideitems="false" drawinventory="true" capacity="6" slotsperrow="6" itempos="32,-100" iteminterval="30,0" itemrotation="90" canbeselected="true" msg="ItemMsgInteractSelect">
+      <Upgrade gameversion="0.18.0.0" itempos="32,-100" iteminterval="30,0" />
+      <GuiFrame relativesize="0.3,0.2" anchor="Center" style="ItemUI" />
+      <Containable items="railgunammo,missile_ammo,shellammo" />
+    </ItemContainer>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
 </Items>
