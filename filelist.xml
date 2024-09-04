@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Concorde" modversion="1.2.128" corepackage="False" gameversion="1.5.9.2">
+<contentpackage name="Concorde" modversion="1.2.135" corepackage="False" gameversion="1.5.9.2">
   <Item file="%ModDir%/Structures/door.xml" />
   <Other file="%ModDir%/Structures/door.png" />
   <Other file="%ModDir%/Structures/vertDoor.png" />
@@ -42,5 +42,9 @@
   <Outpost file="%ModDir%/Working Valve - my edition.sub" />
   <Submarine file="%ModDir%/ECS - Concorde temp.sub" />
   <Submarine file="%ModDir%/maintenance drone.sub" />
+  <Submarine file="%ModDir%/Concorde - Mining Drone Mk.2.sub" />
+  <Submarine file="%ModDir%/Concorde - Attack Drone Mk.2.sub" />
+  <Submarine file="%ModDir%/Concorde - Maintenance Drone.sub" />
+  <Submarine file="%ModDir%/Concorde - Torpedo Mk.1.sub" />
   <Submarine file="%ModDir%/ECS - Concorde.sub" />
 </contentpackage>

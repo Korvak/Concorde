@@ -102,6 +102,34 @@
             <QualityStat stattype="ExplosionRadius" value="0.1"/>
         </Quality>
     </Item>
+      <Item name="advanced detonator" identifier="concorde detonator" description="" category="Equipment,Weapon" Tags="smallitem,detonator" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_light" isshootable="true">
+    <Upgrade gameversion="0.9.3.0" scale="0.5"/>
+    <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.5" notcampaign="true"/>
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.05"/>
+    <PreferredContainer secondary="armcab"/>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" depth="0.55" sourcerect="215,242,41,21" origin="0.5,0.5" />
+    <Body width="40" height="22" density="20" />
+    <Holdable selectkey="Action" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" aimpos="35,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench" type="Equipped" />
+    </Holdable>
+    <ItemContainer canbeselected="true" capacity="1" maxstacksize="1" itempos="20,-11" hideitems="false" containedstateindicatorstyle="explosive" containedspritedepth="0.81">
+      <GuiFrame relativesize="0.11,0.17" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="explosive,depthchargeammo" />
+    </ItemContainer>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="activate" displayname="connection.activate">
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+      </input>
+    </ConnectionPanel>
+  </Item>
+
+
+    <!-- don't know about this one chief -->
     <Item name="item spawner" identifier="item_spawner_example" category="Equipment" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="explosivecrate" allowasextracargo="true" tags="smallitem,weapon,explosive,antiballastfuel" Scale="0.5" impactsoundtag="impact_metal_light">
         <PreferredContainer primary="engcab" secondary="locker"/>
         <Price baseprice="95" sold="false">
