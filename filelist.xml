@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Concorde" modversion="1.2.151" corepackage="False" gameversion="1.5.9.2">
+<contentpackage name="Concorde" modversion="1.2.162" corepackage="False" gameversion="1.5.9.2">
   <Item file="%ModDir%/Structures/door.xml" />
   <Other file="%ModDir%/Structures/door.png" />
   <Other file="%ModDir%/Structures/vertDoor.png" />
@@ -10,12 +10,10 @@
   <Item file="%ModDir%/Items/Storage/containers.xml" />
   <Item file="%ModDir%/Items/Gardening/gardeningTools.xml" />
   <Item file="%ModDir%/Items/Gardening/plantProducts.xml" />
-  <Item file="%ModDir%/Weapons/laserDrill.xml" />
   <Item file="%ModDir%/Weapons/medicalCannon.xml" />
   <Item file="%ModDir%/Weapons/railCannon.xml" />
   <Character file="%ModDir%/Characters/Missile/Missile.xml" />
   <Item file="%ModDir%/Weapons/missile.xml" />
-  <Item file="%ModDir%/Weapons/torpedo.xml" />
   <Other file="%ModDir%/Characters/Missile/missile.png" />
   <Item file="%ModDir%/Items/Weapons/explosives.xml" />
   <Item file="%ModDir%/Items/Weapons/tools.xml" />
@@ -29,23 +27,15 @@
   <ItemAssembly file="%ModDir%/Items/Prefabs/turretSwitchComponent.xml" />
   <Item file="%ModDir%/Items/Tutorials/tutorials.xml" />
   <Text file="%ModDir%/Texts/English.xml" />
-  <Submarine file="%ModDir%/Subs/miner shuttle.sub" />
-  <Submarine file="%ModDir%/Subs/medical shuttle.sub" />
-  <Submarine file="%ModDir%/Subs/attack shuttle.sub" />
-  <Submarine file="%ModDir%/Concorde.sub" />
-  <Submarine file="%ModDir%/Subs/Traitor of the Sea.sub" />
   <Submarine file="%ModDir%/concorde drone hangar ballast.sub" />
   <Submarine file="%ModDir%/concorde drone hangar.sub" />
   <Submarine file="%ModDir%/train example.sub" />
-  <Submarine file="%ModDir%/Mining Drone Mk.2.sub" />
-  <Submarine file="%ModDir%/Subs/Attack Drone Mk.2.sub" />
   <Submarine file="%ModDir%/concorde drone hangar compact.sub" />
-  <Outpost file="%ModDir%/Working Valve - my edition.sub" />
   <Submarine file="%ModDir%/ECS - Concorde temp.sub" />
-  <Submarine file="%ModDir%/maintenance drone.sub" />
   <Submarine file="%ModDir%/Concorde - Mining Drone Mk.2.sub" />
   <Submarine file="%ModDir%/Concorde - Attack Drone Mk.2.sub" />
   <Submarine file="%ModDir%/Concorde - Maintenance Drone.sub" />
   <Submarine file="%ModDir%/Concorde - Torpedo Mk.1.sub" />
+  <Outpost file="%ModDir%/Working Valve - my edition.sub" />
   <Submarine file="%ModDir%/ECS - Concorde.sub" />
 </contentpackage>

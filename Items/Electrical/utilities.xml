@@ -264,9 +264,8 @@
             </StatusEffect>
         </ItemComponent>
     </Item>
-    <Item name="test teleporter" identifier="concorde_teleport" texturescale="1.0,1.0" scale="0.5" category="Decorative" >
+    <Item name="test teleporter" identifier="concorde_teleport" texturescale="1.0,1.0" scale="0.5" category="Decorative" interactthroughwalls="true" interactdistance="100000" >
         <Upgrade gameversion="0.12.0.0" noninteractable="false" />
-        <Body width="330" height="650" />
         <sprite name="guardianpod_background" texture="Content/Items/Alien/guardianpod.png" sourcerect="8,0,338,658" depth="0.6" origin="0.5,0.5" />
         <DecorativeSprite name="guardianpod" texture="Content/Items/Alien/guardianpod.png" sourcerect="345,0,338,658" depth="0.03" origin="0.5,0.5" />
         <BrokenSprite name="guardianpod_broken_gradual" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.02" fadein="true" maxcondition="99" />
@@ -277,14 +276,34 @@
             <limbposition limb="Torso" position="2150,-230" />
             <limbposition limb="Head" position="2250,-200" />
             <limbposition limb="Waist" position="2250,-400" />
-            <limbposition limb="RightFoot" position="2150,-600" />
-            <limbposition limb="LeftFoot" position="2150,-600" />
+            <limbposition limb="RightFoot" position="2150,-600" allowusinglimb="false" />
+            <limbposition limb="LeftFoot" position="2150,-600" allowusinglimb="false"/>
             <limbposition limb="RightHand" position="2250,-350" allowusinglimb="true" />
             <limbposition limb="LeftHand" position="2250,-350" allowusinglimb="true" />
-            <StatusEffect type="OnPicked" target="This" timeframe="0" setvalue="true" />
-            <StatusEffect type="OnActive" target="This,Character" delay="2">
-                <Remove/>
-            </StatusEffect>
+        </Controller>
+        <LightComponent range="200" lightcolor="255,62,62,255" IsOn="false" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flicker="0.8" flickerspeed="0.1" pulsefrequency="0.1" pulseamount="0.1">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
+        </LightComponent>
+        <LightComponent range="0" powerconsumption="5.0" minvoltage="0.5" lightcolor="224,81,255,70" IsOn="true" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flickerspeed="0.1">
+            <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
+        </LightComponent>
+    </Item>
+    <Item name="test teleporter receiver" identifier="concorde_teleport_receiver" texturescale="1.0,1.0" scale="0.5" category="Decorative" interactthroughwalls="true" interactdistance="100000">
+        <Upgrade gameversion="0.12.0.0" noninteractable="false" />
+        <sprite name="guardianpod_background" texture="Content/Items/Alien/guardianpod.png" sourcerect="8,0,338,658" depth="0.6" origin="0.5,0.5" />
+        <DecorativeSprite name="guardianpod" texture="Content/Items/Alien/guardianpod.png" sourcerect="345,0,338,658" depth="0.03" origin="0.5,0.5" />
+        <BrokenSprite name="guardianpod_broken_gradual" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.02" fadein="true" maxcondition="99" />
+        <BrokenSprite name="guardianpod_broken" texture="Content/Items/Alien/guardianpod.png" sourcerect="681,0,338,658" origin="0.5,0.5" depth="0.01" fadein="false" />
+        <Controller UserPos="100,-50" direction="Right" hidehud="true" canbeselected="true" drawuserbehind="false" noninteractablewhenflippedy="false" powerconsumption="500.0" minvoltage="0.5" interactthroughwalls="true" interactdistance="100000">
+            <!-- don't allow laying in bed when wearing an exosuit -->
+            <RequiredItem items="deepdivinglarge" type="Picked" requireempty="true" />
+            <limbposition limb="Torso" position="150,-230" />
+            <limbposition limb="Head" position="250,-200" />
+            <limbposition limb="Waist" position="250,-400" />
+            <limbposition limb="RightFoot" position="150,-600" allowusinglimb="false" />
+            <limbposition limb="LeftFoot" position="150,-600" allowusinglimb="false" />
+            <limbposition limb="RightHand" position="250,-350" allowusinglimb="true" />
+            <limbposition limb="LeftHand" position="250,-350" allowusinglimb="true" />
         </Controller>
         <LightComponent range="200" lightcolor="255,62,62,255" IsOn="false" castshadows="false" allowingameediting="false" vulnerabletoemp="false" flicker="0.8" flickerspeed="0.1" pulsefrequency="0.1" pulseamount="0.1">
             <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
