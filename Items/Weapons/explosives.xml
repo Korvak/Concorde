@@ -138,7 +138,7 @@
             <!-- statuseffect that explodes the grenade when used by something else than a character (e.g. a detonator) -->
             <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
             <StatusEffect type="OnBroken" target="This">
-                <SpawnItem  identifier="torpedo_pump" SpawnPosition="This" Count="1" />
+                <SpawnItem  identifier="" SpawnPosition="This" Count="1" />
             </StatusEffect>
             <StatusEffect type="OnBroken" target="This" delay="1">
                 <Remove />
