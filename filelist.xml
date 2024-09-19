@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Concorde" modversion="1.2.165" corepackage="False" gameversion="1.5.9.2">
+<contentpackage name="Concorde" modversion="1.2.167" corepackage="False" gameversion="1.5.9.2">
   <Item file="%ModDir%/Structures/door.xml" />
   <Other file="%ModDir%/Structures/door.png" />
   <Other file="%ModDir%/Structures/vert_door.png" />
