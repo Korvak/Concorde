@@ -49,14 +49,14 @@
     </ConnectionPanel>
   </Item>
   <Item name="vertical door" identifier="concorde_verticaldoor" tags="door" scale="0.5" health="100" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="true" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
-    <Sprite texture="vertDoor.png" sourcerect="0,0,416,49" depth="0.51" origin="0.5,0.5" />
-    <DecorativeSprite texture="vertDoor.png" sourcerect="0,49,416,49" depth="0.89" origin="0.5,0.5"/>
+    <Sprite texture="vert_door.png" sourcerect="0,0,416,49" depth="0.51" origin="0.5,0.5" />
+    <DecorativeSprite texture="vert_door.png" sourcerect="0,49,416,49" depth="0.89" origin="0.5,0.5"/>
     <Door window="0,0,50,400" canbepicked="true" canbeselected="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="0.7,1">
       <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
       <RequiredItem items="crowbar" type="Equipped" />
-      <Sprite texture="vertDoor.png" sourcerect="0,106,416,50" depth="0.05" origin="0.5,0.0" />
-      <WeldedSprite texture="vertDoor.png" sourcerect="0,203,377,65" depth="0.0" origin="0.5,0.5" />
-      <BrokenSprite texture="vertDoor.png" sourcerect="0,392,416,120" depth="0.509" origin="0.5,0.0" scale="true" />
+      <Sprite texture="vert_door.png" sourcerect="0,106,416,50" depth="0.05" origin="0.5,0.0" />
+      <WeldedSprite texture="vert_door.png" sourcerect="0,203,377,65" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="vert_door.png" sourcerect="0,392,416,120" depth="0.509" origin="0.5,0.0" scale="true" />
       <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
       <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
       <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
@@ -84,17 +84,18 @@
       <input name="set_state" displayname="connection.setstate" />
       <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
       <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
     </ConnectionPanel>
   </Item>
   <Item name="reinforced vertical door" identifier="concorde_heavyverticaldoor" tags="door" scale="0.5" health="300" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="false" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
-    <Sprite texture="vertDoor.png" sourcerect="0,0,416,49" depth="0.51" origin="0.5,0.5" />
-    <DecorativeSprite texture="vertDoor.png" sourcerect="0,49,416,49" depth="0.89" origin="0.5,0.5"/>
+    <Sprite texture="vert_door.png" sourcerect="0,0,416,49" depth="0.51" origin="0.5,0.5" />
+    <DecorativeSprite texture="vert_door.png" sourcerect="0,49,416,49" depth="0.89" origin="0.5,0.5"/>
     <Door window="0,0,50,400" canbepicked="true" canbeselected="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="0.7,1">
       <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
       <RequiredItem items="crowbar" type="Equipped" />
-      <Sprite texture="vertDoor.png" sourcerect="0,158,416,42" depth="0.05" origin="0.5,0.0" />
-      <WeldedSprite texture="vertDoor.png" sourcerect="0,203,377,65" depth="0.0" origin="0.5,0.5" />
-      <BrokenSprite texture="vertDoor.png" sourcerect="0,392,416,120" depth="0.509" origin="0.5,0.0" scale="true" />
+      <Sprite texture="vert_door.png" sourcerect="0,158,416,42" depth="0.05" origin="0.5,0.0" />
+      <WeldedSprite texture="vert_door.png" sourcerect="0,203,377,65" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="vert_door.png" sourcerect="0,392,416,120" depth="0.509" origin="0.5,0.0" scale="true" />
       <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
       <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
       <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
@@ -122,6 +123,7 @@
       <input name="set_state" displayname="connection.setstate" />
       <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
       <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
     </ConnectionPanel>
   </Item>
 	<Item name="window door" identifier="concorde_fullwindoweddoor" tags="door" scale="0.5" health="100" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="false" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
@@ -160,6 +162,7 @@
       <input name="set_state" displayname="connection.setstate" />
       <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
       <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
     </ConnectionPanel>
   </Item>
   <Item name="window hatch with buttons" identifier="concorde_windowhatchwbuttons" allowedlinks="gap,hull,structure,item" linkable="true" tags="door" scale="0.5" health="100" requirebodyinsidetrigger="false" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" ondamagedthreshold="10" allowrotatingineditor="false">
@@ -201,6 +204,7 @@
       <input name="set_state" displayname="connection.setstate" />
       <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
       <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
     </ConnectionPanel>
   </Item>
   <Item name="window hatch" identifier="concorde_windowhatch" allowedlinks="gap,hull,structure,item" linkable="true" tags="door" scale="0.5" health="100" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" ondamagedthreshold="10" allowrotatingineditor="false">
@@ -239,6 +243,7 @@
       <input name="set_state" displayname="connection.setstate" />
       <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
       <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
     </ConnectionPanel>
   </Item>
   <Item name="sub bow" identifier="concorde_fakebow" tags="door" scale="0.5" health="200" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="false" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
@@ -260,6 +265,45 @@
       <input name="set_state" displayname="connection.setstate" />
       <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
       <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="armored door" identifier="concorde_armoreddoor" tags="door" scale="0.5" health="400" damagedbyrepairtools="true" damagedbymonsters="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyexplosions="true" ShowNameInHealthBar="false" explosiondamagemultiplier="0.1" allowrotatingineditor="false" allowedlinks="structure,item" ondamagedthreshold="10" linkable="true">
+    <Sprite texture="armored_door.png" sourcerect="205,8,102,417" depth="0.51" origin="0.5,0.5" />
+    <DecorativeSprite texture="armored_door.png" sourcerect="311,8,95,417" depth="0.89" origin="0.5,0.5"/>
+    <Door canbepicked="true" canbeselected="true" pickkey="Action" msg="ItemMsgForceOpenCrowbar" PickingTime="7.5" shadowscale="0.7,1">
+      <Upgrade gameversion="0.22.0.0" PickingTime="7.5" />
+      <RequiredItem items="crowbar" type="Equipped" />
+      <Sprite texture="armored_door.png"  sourcerect="4,8,197,417" depth="0.05" origin="0.5,0.0" />
+      <WeldedSprite texture="armored_door.png" sourcerect="4,8,197,417" depth="0.0" origin="0.5,0.5" />
+      <BrokenSprite texture="armored_door.png" sourcerect="311,8,95,417" depth="0.509" origin="0.5,0.0" scale="true" />
+      <sound file="Content/Items/Door/Door1.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door2.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door3.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Door/Door4.ogg" type="OnUse" range="500.0" />
+      <sound file="Content/Items/Tools/Crowbar.ogg" type="OnPicked" range="2000.0" onlyinsamesub="true" />
+      <sound file="Content/Items/Door/Duct1.ogg" type="OnFailure" selectionmode="Random" range="300" />
+      <sound file="Content/Items/Door/Duct2.ogg" type="OnFailure" range="300" />
+      <sound file="Content/Items/Door/DoorBreak1.ogg" type="OnBroken" selectionmode="Random" range="2000" />
+      <sound file="Content/Items/Door/DoorBreak2.ogg" type="OnBroken" range="2000" />
+      <StatusEffect type="OnDamaged" target="This">
+        <sound file="Content/Items/Door/DoorBreak1.ogg" selectionmode="Random" range="800" />
+        <sound file="Content/Items/Door/DoorBreak2.ogg" range="800" />
+      </StatusEffect>
+    </Door>
+    <AiTarget sightrange="1500.0" static="True"/>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" fixDurationHighSkill="10" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem items="wrench" type="equipped" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+      <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout"/>
+      <output name="condition_out" displayname="connection.conditionout" />
+      <output name="activate_out" displayname="connection.activateout" />
     </ConnectionPanel>
   </Item>
 </Items>
