@@ -40,7 +40,7 @@
             <!-- when using, the contained fuel tank will detoriate (= lose fuel) -->
             <StatusEffect type="OnUse" targettype="Contained" targets="antiballast_grenade" Condition="-10.0" />
             <!-- explodes characters and tries to do damage only on ballast-->
-            <StatusEffect type="OnUse">
+            <StatusEffect type="OnUse" target="This">
                 <Explosion range="400" force="0.0" showEffects="false" ignorecover="true" structuredamage="0" ballastfloradamage="10" itemdamage="0" />
             </StatusEffect>
             <!-- consume oxygen from the hull -->

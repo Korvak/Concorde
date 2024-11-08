@@ -17,12 +17,28 @@
         </ItemContainer>
     </Item>
     <Item name="shell rack" identifier="concorde_shellrack" tags="container,railgunammocontainer,missileammocontainer,shellammocontainer" pickdistance="120" scale="0.5" canflipx="false" canflipy="false">
-    <Sprite texture="Content/Items/Containers/containers.png" depth="0.84" sourcerect="330,811,218,212" origin="0.5,0.5" />
-    <ItemContainer hideitems="false" drawinventory="true" capacity="6" slotsperrow="6" itempos="32,-100" iteminterval="30,0" itemrotation="90" canbeselected="true" msg="ItemMsgInteractSelect">
-      <Upgrade gameversion="0.18.0.0" itempos="32,-100" iteminterval="30,0" />
-      <GuiFrame relativesize="0.3,0.2" anchor="Center" style="ItemUI" />
-      <Containable items="railgunammo,missile_ammo,shellammo" />
+        <Sprite texture="Content/Items/Containers/containers.png" depth="0.84" sourcerect="330,811,218,212" origin="0.5,0.5" />
+        <ItemContainer hideitems="false" drawinventory="true" capacity="6" slotsperrow="6" itempos="32,-100" iteminterval="30,0" itemrotation="90" canbeselected="true" msg="ItemMsgInteractSelect">
+        <Upgrade gameversion="0.18.0.0" itempos="32,-100" iteminterval="30,0" />
+        <GuiFrame relativesize="0.3,0.2" anchor="Center" style="ItemUI" />
+        <Containable items="railgunammo,missile_ammo,shellammo" />
+        </ItemContainer>
+        <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="pneumatic tube" identifier="concorde_pneumatictube" tags="container,sharedstorage" category="Misc" linkable="true" allowedlinks="sharedstorage" pickdistance="150" waterproof="true" scale="0.5" >
+    <Sprite name="pneumatic tube" texture="Content/Items/Containers/containers.png" depth="0.87" sourcerect="714,1,99,256" origin="0.5,0.5" />
+    <DecorativeSprite texture="containers.png" depth="0.84" sourcerect="0,0,99,256" origin="0.5,0.5" />
+    <ItemContainer capacity="5" slotsperrow="5" canbeselected="true" hideitems="false" itempos="49,-128" containedspritedepths="0.86,0.86,0.86,0.86,0.86" itemrotation="90" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.28,0.28" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem,ammobox,railgunammo,depthchargeammo"/>
     </ItemContainer>
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <!-- backwards compatibility for older versions in which mobile containers like storage containers were containable in any cabinet -->
+    <Upgrade gameversion="1.1.0.0" campaignsaveonly="true">
+      <ItemContainer>
+        <Containable items="smallitem,mediumitem,ammobox,railgunammo,depthchargeammo" />
+        <ClearSubContainerRestrictions />
+      </ItemContainer>
+    </Upgrade>
   </Item>
 </Items>
