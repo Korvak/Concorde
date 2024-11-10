@@ -14,7 +14,7 @@
   <Item file="%ModDir%/Items/Gardening/plantProducts.xml" />
   <Item file="%ModDir%/Weapons/medicalCannon.xml" />
   <Item file="%ModDir%/Weapons/railCannon.xml" />
-  <Item file="%ModDir%/Weapons/depthcharge.xml" />
+  <Item file="%ModDir%/Weapons/depthCharges.xml" />
   <Other file="%ModDir%/Weapons/loader.png" />
   <Character file="%ModDir%/Characters/Missile/Missile.xml" />
   <Item file="%ModDir%/Weapons/missile.xml" />
