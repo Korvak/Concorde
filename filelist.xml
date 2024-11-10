@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Concorde" modversion="1.2.175" corepackage="False" gameversion="1.6.19.1">
+<contentpackage name="Concorde" modversion="1.2.179" corepackage="False" gameversion="1.6.19.1">
   <Item file="%ModDir%/Structures/door.xml" />
   <Other file="%ModDir%/Structures/door.png" />
   <Other file="%ModDir%/Structures/vert_door.png" />
@@ -14,6 +14,7 @@
   <Item file="%ModDir%/Items/Gardening/plantProducts.xml" />
   <Item file="%ModDir%/Weapons/medicalCannon.xml" />
   <Item file="%ModDir%/Weapons/railCannon.xml" />
+  <Item file="%ModDir%/Weapons/depthcharge.xml" />
   <Other file="%ModDir%/Weapons/loader.png" />
   <Character file="%ModDir%/Characters/Missile/Missile.xml" />
   <Item file="%ModDir%/Weapons/missile.xml" />
