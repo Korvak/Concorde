@@ -40,7 +40,7 @@
     </ConnectionPanel>
   </Item>
   
-  <Item name="XT 01 missile" identifier="concorde_missile" tags="missile_ammo" category="Weapon" scale="0.4" impactsoundtag="impact_metal_heavy" damagedbymonsters="true" damagedbyexplosions="true" damagedbyrepairtools="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" indestructible="true" health="10" cargocontaineridentifier="">
+  <Item name="XT 01 missile" identifier="concorde_missile" tags="missile_ammo" category="Weapon" scale="0.4" sonarsize="10" impactsoundtag="impact_metal_heavy" damagedbymonsters="true" damagedbyexplosions="true" damagedbyrepairtools="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" indestructible="true" health="10" cargocontaineridentifier="">
     <Upgrade gameversion="0.20.4.0" scale="0.4"/>
     <PreferredContainer primary="concorde_missile-loader" secondary="missileammocontainer" />
     <Price baseprice="120" minavailable="1">

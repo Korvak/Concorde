@@ -221,57 +221,33 @@
         <Containable items="concorde_railcannon_bolt" />
       </ItemContainer>
     </Item>
-    <Item name="railcannon bolt" identifier="concorde_railcannon_bolt" category="Weapon" scale="0.5" sonarsize="5" hideinmenus="true">
+    <Item name="railcannon bolt" identifier="concorde_railcannon_bolt" category="Weapon" scale="0.5" sonarsize="50" hideinmenus="true">
       <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
-      <Body width="200" height="10" density="10" />
+      <Body width="40000" height="10" density="10.1" />
       <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
       <Projectile characterusable="false" launchimpulse="0" maxtargetstohit="999" damagedoors="true">
         <Attack structuredamage="0" itemdamage="0" ballastfloradamage="100" severlimbsprobability="0" penetration="1.0" targetforce="1000">
           <Affliction identifier="burn" strength="25" />
-          <Affliction identifier="stun" strength="15" />
         </Attack>
         <StatusEffect type="OnActive" target="This">
           <ParticleEmitter particle="FlareBubbles" anglemin="0" anglemax="360" particleamount="10" velocitymin="80" velocitymax="80" scalemin="1" scalemax="3" emitacrossrayinterval="1" />
           <ParticleEmitter particle="tracerpulselaser" particleamount="1" copyentityangle="true" anglemin="90" anglemax="90" velocitymin="0" velocitymax="0" scalemin="25" scalemax="25" emitacrossrayinterval="5"/>
-          <Explosion range="150.0" penetration="1.0" empstrength="100" playtinitus="true" ballastfloradamage="50" structuredamage="0" itemdamage="0" force="-10.0" flames="false" smoke="false" sparks="false" underwaterbubble="false" flash="false" ignorecover="true" interval="5">
-            <Affliction identifier="burn" strength="75" />
+        </StatusEffect>
+        <StatusEffect type="Always" target="This" interval="0.25" disabledeltatime="true">
+          <Explosion range="300.0" penetration="1.0" empstrength="100" playtinitus="true" ballastfloradamage="50" structuredamage="0" itemdamage="0" force="0.0" showEffects="false" ignorecover="true" disabledeltatime="true">
+            <Affliction identifier="burn" strength="150" />
             <Affliction identifier="nausea" strength="100" />
             <Affliction identifier="concealed" strength="1" />
-            <Affliction identifier="radiationsickness" strength="25" />
+            <Affliction identifier="radiationsickness" strength="100" />
             <Affliction identifier="internaldamage" strength="25" />
             <Affliction identifier="concussion" strength="10" />
             <Affliction identifier="stun" strength="15" />
           </Explosion>
         </StatusEffect>
-        <StatusEffect type="OnActive" target="This" delay="60">
+        <StatusEffect type="OnActive" target="This" delay="30">
           <Remove />
         </StatusEffect>
       </Projectile>
-    </Item>
-    <Item name="railcannon explosion" identifier="concorde_railcannon_blast" category="Weapon" scale="1" sonarsize="50" health="10" hideinmenus="true">
-      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
-      <Body width="170" height="10" density="20" />
-      <TriggerComponent target="This" triggeredby="Human, Item" force="500" radius="2000" distancebasedforce="false">
-        <StatusEffect type="Always" target="This">
-          <Conditional conditionpercentage="gt 90" />
-          <ParticleEmitter particle="gravityspherefx" particleamount="1" emitinterval="1" />
-        </StatusEffect>
-        <!--breaks after tot seconds to activate explosion-->
-        <StatusEffect type="Always" target="This" delay="1" Condition="-100.0" disabledeltatime="true"></StatusEffect>
-
-
-        <!-- Remove the item after exploding -->
-        <StatusEffect type="OnBroken" target="This" delay="0.01">
-          <Remove />
-        </StatusEffect>
-      </TriggerComponent>
-      <Projectile characterusable="false" hitscan="true" removeonhit="false" damagedoors="true" penetration="1.0">
-        <!-- do explosion flare --> 
-        <StatusEffect type="OnBroken" target="This">
-          <ParticleEmitter particle="tracerpulselaser" particleamount="1" velocitymin="0" velocitymax="0" copyentityangle="true" anglemin="90" anglemax="90" scalemin="25" scalemax="25" colormultiplier="0,0,255,255"/>
-        </StatusEffect>
-      </Projectile>
-      
     </Item>
   <!--#endregion-->
   <!--#region extra railgun ammo -->

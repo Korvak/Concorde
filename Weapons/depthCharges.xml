@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Items>
 
-  <Item name="termite depth charge" identifier="concorde_firedepthchargeshell" tags="depthchargeammo,demolitionsexpert" category="Weapon" sonarsize="5" scale="0.4" impactsoundtag="impact_metal_heavy" damagedbymonsters="true" damagedbyexplosions="true" damagedbyrepairtools="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" indestructible="true" health="100" cargocontaineridentifier="">
+  <Item name="termite depth charge" identifier="concorde_firedepthchargeshell" tags="depthchargeammo,demolitionsexpert" category="Weapon" sonarsize="5" scale="0.4" impactsoundtag="impact_metal_heavy" damagedbymonsters="true" damagedbyexplosions="true" damagedbyrepairtools="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" indestructible="true" health="200" cargocontaineridentifier="">
     <Upgrade gameversion="0.20.4.0" scale="0.4"/>
     <PreferredContainer primary="depthchargeloader" secondary="ammoboxcontainer" />
     <Price baseprice="170" sold="false">
@@ -24,10 +24,8 @@
     <Body width="250" height="120" density="30" />
     <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,20" handle2="10,20" aimable="false" msg="ItemMsgPickUpSelect" />
     <Projectile characterusable="false" launchimpulse="20.0" maxtargetstohit="3" >
-      <!-- Make destructible when launched -->
-      <StatusEffect type="OnUse" target="This" Indestructible="false"/>
       <!-- spawns a uex on impact to make it so that it activates -->
-      <StatusEffect type="OnImpact" target="This" limit="1">
+      <StatusEffect type="OnImpact" target="This" Indestructible="false">
         <Conditional hastag="neq uex" target="Contained" />
         <SpawnItem identifiers="uex" spawnposition="ThisInventory" SpawnIfCantBeContained="false" />
       </StatusEffect>
@@ -51,13 +49,17 @@
       <!-- main effect + dmg -->
       <StatusEffect type="Always" target="This" interval="1" condition="-10">
         <Conditional hastag="eq explosive" target="This" targetcontaineditem="true" /> <!--checks if impact happened -->
-        <Explosion range="400.0" ballastfloradamage="150" structuredamage="25" itemdamage="25" force="0" severlimbsprobability="0.5" showEffects="false" penetration="0.8">
-          <Affliction identifier="burn" strength="150"/>
+        <Explosion range="300.0" ballastfloradamage="150" structuredamage="25" itemdamage="25" force="0" severlimbsprobability="0.5" showEffects="false" penetration="0.8">
+          <Affliction identifier="burn" strength="300"/>
           <Affliction identifier="stun" strength="5" />
+        </Explosion>
+        <Explosion range="850.0" ballastfloradamage="30" structuredamage="0" itemdamage="0" force="0" severlimbsprobability="0.5" showEffects="false" penetration="0.6">
+          <Affliction identifier="burn" strength="150"/>
+          <Affliction identifier="stun" strength="1" />
         </Explosion>
       </StatusEffect>
       <!-- removes oxygen from hulls -->
-      <StatusEffect type="NotInWater" OnlyInside="true" target="Hull" Oxygen="-10000" interval="1"> 
+      <StatusEffect type="NotInWater" OnlyInside="true" target="Hull" Oxygen="-25000" interval="1"> 
         <Conditional hastag="eq explosive" target="This" targetcontaineditem="true" /> <!--checks if impact happened -->
         <Explosion range="1000.0" OnlyInside="true" ballastfloradamage="0" structuredamage="0" itemdamage="0" force="0" severlimbsprobability="0" showEffects="false" penetration="0.2">
           <Affliction identifier="oxygenlow" strength="5"/>
