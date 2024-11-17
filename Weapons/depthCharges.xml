@@ -250,4 +250,77 @@
     </Quality>
   </Item>
 
+  <!-- transport -->
+  <Item name="transport tube" identifier="concorde_transporttubeloader" tags="depthchargeammosource,transport" category="Machine,Weapon" linkable="true" allowedlinks="depthchargelauncher" scale="0.5">
+    <Upgrade gameversion="1.6.10.0">
+      <ItemContainer canbepicked="true" pickkey="Use" />
+    </Upgrade>
+    <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" depth="0.8" sourcerect="354,2,125,188" origin="0.5,0.5" />
+    <ItemContainer hideitems="false" autointeractwithcontained="true" autointeractwithcontainedtags="autointeractabledepthchargeammo" drawinventory="true" capacity="1" maxstacksize="1" itempos="62,-117" itemrotation="-90" 
+                   anbeselected="true" canbepicked="true" pickkey="Use" msg="ItemMsgInteractSelect" spawnwithid="concorde_transportpod">
+      <!-- the loader can't be "picked" in the sense of picking it up, the picking action is just defined to relay the Use input to the contained boarding pod -->
+      <GuiFrame relativesize="0.18,0.23" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="transportpod,concorde_transportpod" />
+      <StatusEffect type="OnUse" target="This" delay="3">
+        <SpawnItem identifier="concorde_transportpod" spawnposition="ThisInventory" delay="3" />
+      </StatusEffect>
+    </ItemContainer>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="contained_items" displayname="connection.ammunitionout" />
+    </ConnectionPanel>
+  </Item>
+
+  <Item name="transport pod" identifier="concorde_transportpod" tags="depthchargeammo,autointeractabledepthchargeammo,transport,transportpod" showcontentsintooltip="true" category="Weapon" sonarsize="5" scale="0.3" impactsoundtag="impact_metal_heavy" cargocontaineridentifier="" AllowDeselectWhenIdling="false">
+    <PreferredContainer primary="depthchargeloader" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="512,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="629,0,279,142" depth="0.55" origin="0.5,0.5" />
+    <ContainedSprite name="Boarding Pod Contained" allowedcontainertags="depthchargeammosource" texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="489,90,119,95" depth="0.54" origin="0.5,0.5" />
+    <Body width="250" height="120" density="30" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-80" handle1="-30,14" handle2="30,14" aimable="false" msg="ItemMsgPickUpSelect">
+      <!-- slow down the character when holding the item -->
+      <StatValue stattype="MovementSpeed" value="-0.4" />
+      <StatusEffect type="OnActive" target="Character" DisableRunning="true" />
+    </Holdable>
+    <Projectile characterusable="false" launchimpulse="10" damagedoors="true">
+      <!-- break (and throw the character out) when inside a hull, with a very brief delay -->
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="0.1"/>
+      <!-- Trigger explosions on contained items -->
+      <StatusEffect type="OnBroken" target="Contained">
+        <Use />
+      </StatusEffect>
+      <!-- Remove the item after exploding -->
+      <StatusEffect type="OnBroken" target="This">
+        <!-- short-range explosion to destroy walls immediately around the pod, making it less likely for the character to get stuck e.g. between multiple walls or inside some weird wall setup -->
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" canbeselected="false">
+      <GuiFrame relativesize="0.2,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="smallitem" />
+    </ItemContainer>
+    <Controller UserPos="0,-20" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="false" AllowSelectingWhenSelectedByOther="false" selectkey="Use" drawuserbehind="true" forceusertostayattached="true" msg="itemmsggoinside">
+      <limbposition limb="Head" position="74,-40" />
+      <limbposition limb="Torso" position="74,-40" />
+      <limbposition limb="Waist" position="74,-40" />
+      <limbposition limb="LeftHand" position="74,-40" />
+      <limbposition limb="RightHand" position="74,-40" />
+      <limbposition limb="RightLeg" position="74,-40" />
+      <limbposition limb="LeftLeg" position="74,-40" />
+      <limbposition limb="RightFoot" position="74,-40" />
+      <limbposition limb="LeftFoot" position="74,-40" />
+      <StatusEffect type="OnActive" targettype="Character" delay="0.25" stackable="true" indetectable="true" DisableFocusingOnEntities="true" invisibletimer="0.1" IgnoreMeleeWeapons="true" PressureProtection="6500.0" setvalue="true" />
+      <!-- child of the Controller = active when someone's using it -->
+      <LightComponent range="100" PowerConsumption="0" lightcolor="150,255,150,0" blinkfrequency="1" AllowInGameEditing="false" IsOn="true">
+        <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="700,55,33,30" depth="0.54" origin="2.1,0.5" alpha="1.0" />
+        <IsActiveConditional ContainerIdentifier="! concorde_transporttubeloader"/>
+      </LightComponent>
+      <LightComponent range="100" PowerConsumption="0" lightcolor="150,255,150,0" blinkfrequency="1" AllowInGameEditing="false" IsOn="true">
+        <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="700,55,33,30" depth="0.54" origin="0.5,0.0" alpha="1.0" />
+        <IsActiveConditional ContainerIdentifier="concorde_transporttubeloader"/>
+      </LightComponent>
+    </Controller>
+  </Item>
+
 </Items>
