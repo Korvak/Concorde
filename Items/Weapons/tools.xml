@@ -38,7 +38,7 @@
             <ParticleEmitter particle="fixfoam" anglemin="0" anglemax="0" velocitymin="800" velocitymax="1000" particlespersecond="32" />
             <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="1000" volume="0.5"  loop="true"/>
             <!-- when using, the contained fuel tank will detoriate (= lose fuel) -->
-            <StatusEffect type="OnUse" targettype="Contained" targets="antiballast_grenade" Condition="-10.0" />
+            <StatusEffect type="OnUse" target="Contained" Condition="-10.0" />
             <!-- explodes characters and tries to do damage only on ballast-->
             <StatusEffect type="OnUse" target="This">
                 <Explosion range="400" force="0.0" showEffects="false" ignorecover="true" structuredamage="0" ballastfloradamage="10" itemdamage="0" />

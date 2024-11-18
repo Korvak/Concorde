@@ -9,7 +9,7 @@
 		  <Upgrade gameversion="0.9.600.0" lightcolor="255,255,255,0"/>
 		  <sprite texture="Content/Items/Command/navigatorLights.png" depth="0.025" sourcerect="256,320,288,240" origin="0.5,0.5" alpha="1.0" />
 		</LightComponent>
-		<Steering minvoltage="0.5" canbeselected="true" powerconsumption="10" linkuitocomponent="Sonar" msg="ItemMsgInteractSelect" allowuioverlap="true" hudlayer="-1">
+		<Steering minvoltage="0.5" canbeselected="true" powerconsumption="10" linkuitocomponent="Sonar" msg="ItemMsgInteractSelect" allowuioverlap="true" CloseByClickingOutsideGUIFrame="false" hudlayer="-1">
 			<GuiFrame relativesize="0.3,0.35" anchor="CenterLeft" style="OuterGlow" color="0,0,0,0.8" relativeoffset="0.006,-0.01" draggable="false" />
 			<StatusEffect type="InWater" target="This" condition="-0.5" />
 			<MaintainPosIndicator texture="Content/Items/Command/NavUI.png" sourcerect="50,0,60,61" />
@@ -18,7 +18,7 @@
 			<poweronsound file="Content/Items/PowerOnLight2.ogg" range="1000" loop="false" />
 		</Steering>
 		<aitarget sightrange="100" soundrange="4000" staticsight="true" fadeouttime="5" />
-		<Sonar canbeselected="true" powerconsumption="100" displaybordersize="-0.1" allowuioverlap="true" hudlayer="-2">
+		<Sonar canbeselected="true" powerconsumption="100" displaybordersize="-0.1" allowuioverlap="true" CloseByClickingOutsideGUIFrame="false" hudlayer="-2">
 			<GuiFrame relativesize="0.3,0.3" anchor="CenterLeft" relativeoffset="0.006,-0.01" draggable="false" />
 			<sound file="Content/Items/Command/SonarPing.ogg" type="OnUse" range="1000.0" />
 			<sound file="Content/Items/Command/SonarPing2.ogg" type="OnUse" range="1000.0" />
@@ -51,7 +51,7 @@
 		  <Button text="Signal out #3" connection="signal_out3" />
 		</CustomInterface>
 		<ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
-		  <GuiFrame relativesize="0.25,0.4" minsize="400,450" maxsize="480,500" anchor="Center" style="ConnectionPanel" />
+		  <GuiFrame relativesize="0.25,0.4" minsize="400,450" maxsize="480,500" anchor="Center" pivot="TopLeft" style="ConnectionPanel" />
 		  <RequiredSkill identifier="electrical" level="40" />
 		  <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
 			<Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
