@@ -1,5 +1,5 @@
 <Items>
-    <Item name="antiballast spray" identifier="antiballast_spray" category="Equipment" Tags="smallitem,weapon,antiballast_tool,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+    <Item name="antiballast spray" identifier="concorde_antiballast_spray" category="Equipment" Tags="smallitem,weapon,antiballast_tool,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
         <Upgrade gameversion="0.10.0.0" scale="0.5" />
         <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.2" notcampaign="true"/>
         <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.1"/>

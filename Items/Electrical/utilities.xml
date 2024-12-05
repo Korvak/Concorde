@@ -162,7 +162,7 @@
             <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1704,504,338,658" origin="0.5,0.5" size="1,1" alpha="1.0" />
         </LightComponent>
     </Item>
-    <!-- used by ecs Concorde old turrets -->
+    <!-- used by ecs Concorde artillery turrets -->
     <Item name="turret chair" identifier="turret_chair" nameidentifier="opdeco_officechair" tags="chair" allowattachitems="true" texturescale="1.0,1.0" scale="0.5" category="Decorative" canflipy="true">
       <Sprite name="chair" texture="%ModDir%/Items/Misc/chair.png" depth="0.55" sourcerect="0,0,170,216" origin="0.5,0.5" />
       <Controller UserPos="10,30" direction="Right" hidehud="false" canbeselected="true" issecondaryitem="true" drawuserbehind="true">
@@ -179,6 +179,38 @@
         <requireditem identifier="wrench" type="Equipped" />
         <StatusEffect type="Always" target="Character" SpeedMultiplier="0.2" setvalue="true" />
       </Holdable>
+    </Item>
+    <!-- used by ecs mining drone -->
+    <Item name="item magnet" identifier="concorde_itemmagnet" category="Alien" Tags="alien" scale="0.5" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbyrepairtools="true" damagedbymeleeweapons="true" health="300">
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items_02.png" depth="0.8" sourcerect="1856,0,171,447" origin="0.5,0.5" />
+        <BrokenSprite texture="Content/Items/Alien/AlienRuins_Items_02.png" sourcerect="1856,459,171,447" depth="0.799" origin="0.5,0.5" scale="true" />
+        <LightComponent range="200" castshadows="False" drawbehindsubs="False" ison="True" blinkfrequency="0" lightcolor="143,236,166,200" isactive="True" minvoltage="0" powerconsumption="0" vulnerabletoemp="False" pickingtime="0" canbepicked="False" allowingameediting="False" msg="">
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items_02.png" sourcerect="1858,929,168,439" origin="0.5,0.5" alpha="0.5" />
+        <StatusEffect type="OnActive" target="This">
+            <ParticleEmitter particle="bubbles" copyentityangle="true" VelocityMin="500" VelocityMax="550" ScaleMax="1.5" ParticlesPerSecond="100" LifeTimeMultiplier="1.2" />
+        </StatusEffect>
+        </LightComponent>
+        <TriggerComponent triggeredby="Item" force="-75" width="2500" height="400" bodyoffset="1250,0" forcefluctuationstrength="0.25" forcefluctuationinterval="10" >
+        </TriggerComponent>
+        <ConnectionPanel canbeselected="true" hudpriority="10" locked="True" allowingameediting="False">
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel"/>
+        <input name="toggle" displayname="connection.togglestate"/>
+        <input name="set_state" displayname="connection.setstate" />
+        <StatusEffect type="OnDamaged" target="This">
+            <ParticleEmitter particle="plasmaspark" drawontop="true" particleamount="5" scalemin="0.3" scalemax="0.5" velocitymin="300" velocitymax="800" anglemin="0" anglemax="360" />
+            <ParticleEmitter particle="damagebubbles" drawontop="true" particleamount="5" scalemin="0.5" scalemax="1" anglemin="90" anglemax="90" velocitymin="50" velocitymax="100" />
+            <Sound file="Content/Sounds/Damage/HitMetal1.ogg" range="2000" />
+            <Sound file="Content/Sounds/Damage/HitMetal2.ogg" range="2000" />
+            <Sound file="Content/Sounds/Damage/HitMetal3.ogg" range="2000" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+            <ParticleEmitter particle="ElectricShock" drawontop="false" distancemin="10" distancemax="25" particleamount="5" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1" />
+            <ParticleEmitter particle="plasmaspark" drawontop="true" particleamount="50" scalemin="0.5" scalemax="1" velocitymin="600" velocitymax="1000" anglemin="0" anglemax="360" />
+            <ParticleEmitter particle="risingbubbles" particleamount="1" anglemin="90" anglemax="90" velocitymin="50" velocitymax="100" scalemin="1" scalemax="2" startdelaymin="0.1" startdelaymax="0.3" />
+            <sound file="Content/Items/Weapons/ElectricalDischarger.ogg" range="50000" dontmuffle="true" />
+        </StatusEffect>
+        </ConnectionPanel>
     </Item>
     <!--other stuff that didn't work that well -->
     <Item name="small gravity well" identifier="concorde_smallgravitysphere" category="Alien" linkable="true" scale="0.1">
