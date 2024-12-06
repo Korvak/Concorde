@@ -1,5 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
+	<Item name="gate component" identifier="concorde_gatecomponent" category="Electrical" Tags="smallitem,signal,logic,circuitboxcomponent" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true" signalcomponentcolor="#694341">
+		<Price baseprice="100" minleveldifficulty="15">
+		  <Price storeidentifier="merchantoutpost" />
+		  <Price storeidentifier="merchantcity" sold="false"/>
+		  <Price storeidentifier="merchantresearch" multiplier="1.25" />
+		  <Price storeidentifier="merchantmilitary" />
+		  <Price storeidentifier="merchantmine" />
+		  <Price storeidentifier="merchantengineering" multiplier="0.9" />
+		</Price>
+		<PreferredContainer primary="engcab"/>
+		<PreferredContainer secondary="wreckengcab,abandonedengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+		<Deconstruct time="10">
+		  <Item identifier="fpgacircuit" />
+		</Deconstruct>
+		<Fabricate suitablefabricators="fabricator" requiredtime="10">
+		  <RequiredItem identifier="fpgacircuit" />
+		</Fabricate>
+		<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,388,63,57" origin="0.5,0.5" />
+		<Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="64,128,32,32" origin="0.5,0.5" canflipx="false" />
+		<RelayComponent canbeselected="true" vulnerabletoemp="false" canbeoverloaded="false">
+		  <GuiFrame relativesize="0.2,0.14" minsize="450,160" anchor="Center" style="ItemUI" />
+		</RelayComponent>
+		<Body width="31" height="25" density="15" />
+		<Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+		  <RequiredItem items="wrench" type="Equipped" />
+		</Holdable>
+		<ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+		  <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+		  <RequiredItem items="screwdriver" type="Equipped" />
+		  <input name="signal_in1" displayname="connection.signalinx~[num]=1" />
+		  <input name="signal_in2" displayname="connection.signalinx~[num]=2" />
+		  <input name="signal_in3" displayname="connection.signalinx~[num]=3" />
+		  <input name="signal_in4" displayname="connection.signalinx~[num]=4" />
+		  <input name="toggle" displayname="connection.togglestate" />
+		  <input name="set_state" displayname="connection.setstate" />
+		  <output name="signal_out1" displayname="connection.signaloutx~[num]=1" />
+		  <output name="signal_out2" displayname="connection.signaloutx~[num]=2" />
+		  <output name="signal_out3" displayname="connection.signaloutx~[num]=3" />
+		  <output name="signal_out4" displayname="connection.signaloutx~[num]=4" />
+		  <output name="state_out" displayname="connection.stateout" fallbackdisplayname="connection.signalout" />
+		</ConnectionPanel>
+	</Item>
 	<Item name="microwave reactor" identifier="concorde_railcannonreactor" tags="reactor" type="Reactor" linkable="true" allowedlinks="reactor" category="Machine" indestructible="false" scale="0.5">
 		<sprite texture="Content/Map/Outposts/Art/GenericAssets2.png" sourcerect="38,336,575,849" depth="0.8" origin="0.5,0.5" />
 		<UpgradePreviewSprite scale="3.0" texture="Content/UI/WeaponUI.png" sourcerect="0,960,64,64" origin="0.5,0.45" />

@@ -2,14 +2,59 @@
 <infotexts language="English" nowhitespace="false" translatedname="English">
 <!-- tutorials' text -->
 <korvaksub_submarine_tutorial>
-Cool tutorial Huh?\n
-This is a tutorial alright.\n
-Use the submarine as you please.
+    <h1>Interactible Items</h1>  
+    The Sub contains a series of objects that look like decorations but are usable. 
+    One example is the medical fabricator which looks like a red medical centrifuge but is actually interactible. 
+    To see if an object is interactible or not, try hovering over it or even clicking it.  
+    Most objects should be easy enough to distinguish from normal decorations.   
+
+    <h1><b>Ballast</b></h1>  
+    The ballast introduces two new movement systems, anti-ballast flora grenade and equipment and ballast flora detectors.  
+        - tube system : The tube system allows moving from one end to the other of the ballast room by interacting with the pneumatic tube capsule.
+                    do not worry about the number of capsule since they auto reset.  
+
+        - grav lift : The gravitational lift or elevator allows moving swiftly up and down from the ballast room without the need of a ladder.
+                    To go up just stand on it and let go /ragdoll. To go down just press the button to deactivate it and go down.
+
+        - anti-ballast flora equipment : To combat ballast flora, new equipments are available to craft in the fabricator such as the antiballast grenade and canister to use with the sprayer.   
+
+    <h1><b>Science Room</b></h1>  
+    The science room has a containment unit that can store up to 4 alien artifacts and a set of automated greenhouses. 
+    An automated greenhouse is just like a fabricator but for plants and requires seed and fertilizer.  
+
+    <h1><b>Weapon Room</b></h1>  
+    The weapon room or gun room introduces new weapons such as sets of artillery cannons, a missile launcher system and a microwave cannon.  
+
+        - pneumatic transfer system : A set of two pneumatic tubes that are placed around both ends of the room to quickly transfer heavy objects by placing them inside.  
+
+        - artillery cannons : Each artillery station controls a set of three artillery cannons. The cannons are aimed with the use of a valve and the cannons position is displayed through a monitor.  
+
+        - valve : You can interact with valves and turn them by moving your mouse clockwise or counterclockwise in a circle.  
+
+        - microwave cannon : The cannon is loaded through a system of small nuclear reactors, placed at the corners of the main reactor, which can be charged by using fuel rods. 
+                             Do not that the reactor are interactible and quite small. 
+                             To shoot the cannon you can interact with the monitor display near the reactor or just click the main reactor.  
+
+    <h1><b>Torpedo System</b></h1>  
+    The torpedo system is located near the right end of the the ballast room where you can load depth charges in the active torpedo.  
+    The torpedo system can be controlled through the periscope in the Command Room and allows a certain amount of control over torpedos. 
+    Do note that torpedos need to be armed before they can be launched. 
+    Torpedos don't explode on contact but require to be remotely trigger from the torpedo periscope. Press one to launch and once again to detonate the active torpedo.  
 
 </korvaksub_submarine_tutorial>
 <korvaksub_drone_tutorial>
-Using a drone is note that easy.\n\n
-It will become easier with time.
+    Drones can be controlled from their respective stations. 
+    Before we start, make sure that the drone hangar is open by changing its floor.  
+    To Control a drone, you just have to sit in the control station, make sure it is turned on by flipping on the switch;
+    and then control it through its small navigation UI.  
+    Each drone can switch and cycle to a series of modes :  
+
+    - drive mode 
+
+    - turret mode 
+    
+    - special mode (not present in all drones)  
+
 </korvaksub_drone_tutorial>
 <!-- connections -->
 <connection.turretaiminginx>position_in_[num]</connection.turretaiminginx>
